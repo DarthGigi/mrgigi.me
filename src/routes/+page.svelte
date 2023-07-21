@@ -6,7 +6,7 @@
   import ProgressBar from '$lib/components/progressBar.svelte';
   import { scale } from 'svelte/transition';
 
-  let isDeepDiveOpen = true;
+  let isDeepDiveOpen = false;
   let scrollProgress = 0;
   let animation = true;
 
