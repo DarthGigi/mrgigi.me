@@ -44,13 +44,13 @@
   <div class="flex h-full shrink-0 flex-col first:pl-8 last:pr-8">
     <h2 class="ml-12 mt-5 self-start text-6xl font-semibold text-neutral-200">Meet The Universe</h2>
     <div class="flex h-full items-center">
-      <img class="pointer-events-none block aspect-video h-[70%] w-auto" src="https://i.redd.it/j6ryhzp1k8fa1.png" alt="TON-618" />
+      <img class="pointer-events-none block aspect-video h-[70%] w-auto" src="https://i.vgy.me/hbjfrj.png" alt="TON-618" />
       <p class="ml-36 max-w-sm text-lg font-semibold text-neutral-600"><span class="text-neutral-400">TON 618 (short for Tonantzintla 618) is a hyperluminous, broad-absorption-line, radio-loud quasar and Lyman-alpha blob </span> located near the border of the constellations Canes Venatici and Coma Berenices, with the projected comoving distance of approximately 18.2 billion light-years from Earth. <span class="text-neutral-400">It possesses one of the most massive black holes ever found,</span> at 40 billion M<sub>☉</sub>.</p>
     </div>
   </div>
   <div class="flex h-full w-screen shrink-0 flex-col last:pr-8">
     <div class="flex h-full items-center">
-      <img class="pointer-events-none relative -z-10 -ml-72 block aspect-video h-[80%] w-auto" src="https://lui.vn/wp-content/uploads/2022/12/Sun-Emits-a-Solstice-CME-2.jpg" alt="Stephenson 2-18" />
+      <img class="pointer-events-none relative -z-10 -ml-72 block aspect-video h-[80%] w-auto" src="https://i.vgy.me/zg6eYG.jpg" alt="Stephenson 2-18" />
       <p class="max-w-sm text-lg font-semibold text-neutral-600"><span class="text-neutral-400">Stephenson 2-18 (St2-18, also known as Stephenson 2-18 and RSGC2-18) is a red supergiant (RSG) or red hypergiant (RHG) star.</span> It is close to, and a possible member of, the open cluster Stephenson 2. <span class="text-neutral-400">It is about 6,000 parsecs (20,000 ly) away from Earth in the constellation of Scutum and </span> is one of the largest known stars.</p>
     </div>
   </div>
