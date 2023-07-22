@@ -7,13 +7,13 @@
   import lozad from 'lozad';
   import { onMount } from 'svelte';
   import Image from 'svelte-image';
-  const observer = lozad('.lozad', {
-    rootMargin: '10px 0px',
-    threshold: 0.3,
-    enableAutoReload: true
-  });
+
   onMount(() => {
-    observer.observe();
+    lozad('.lozad', {
+      rootMargin: '10px 0px',
+      threshold: 0.3,
+      enableAutoReload: true
+    }).observe();
   });
 
   let isDeepDiveOpen = false;
@@ -22,14 +22,14 @@
 
 <Transition unmount={false} show={!isDeepDiveOpen} class="flex h-screen items-center justify-center transition-transform duration-1000" leave="transition ease-in-out duration-1000 transform" leaveTo="translate-x-[calc(100vw*-1_+_10vw)]" leaveFrom="translate-x-0" enter="transition ease-in-out duration-1000 transform" enterFrom="translate-x-[calc(100vw*-1_+_10vw)]" enterTo="translate-x-0">
   <div class="grid w-full max-w-[980px] auto-rows-[18rem] grid-cols-1 gap-5 md:grid-cols-[21rem_11rem_21rem]">
-    <Card class="group col-span-2 row-span-2 flex items-center justify-center bg-black  ">
-      <div class="absolute top-0 -z-10 h-0 w-full bg-gradient-to-b from-[#726C4C] to-[#4D4D4D] transition-all duration-300 ease-in group-hover:h-full" />
+    <Card class="group row-span-2 flex items-center justify-center bg-black md:col-span-2  ">
+      <div class="absolute top-0 z-0 h-0 w-full bg-gradient-to-b from-[#726C4C] to-[#4D4D4D] transition-all duration-300 ease-in group-hover:h-full" />
       <div class="flex h-full w-full flex-col">
         <h2 class="relative mt-6 w-full bg-gradient-to-b from-[#726C4C] to-[#4D4D4D] bg-clip-text text-6xl font-semibold text-transparent transition-colors delay-100 duration-300 group-hover:text-black">Meet Me.</h2>
         <Image loading="eager" src="/assets/images/gigi/Gigi3.png" alt="Waving Memoji" />
       </div>
     </Card>
-    <Card class="group col-span-1 row-span-1 flex items-center justify-center bg-black  ">
+    <Card class="group row-span-1 flex items-center justify-center bg-black md:col-span-1  ">
       <div class="flex h-full w-full flex-col">
         <h3 class="relative flex h-full w-full flex-col items-center justify-between py-6 text-4xl font-semibold">
           <pre class="relative inline-block -translate-x-full overflow-hidden bg-black text-white text-opacity-20 transition-all duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">&lt;h3&gt;</pre>
@@ -40,9 +40,9 @@
         </h3>
       </div>
     </Card>
-    <Card bind:isDeepDiveOpen class="group col-span-1 row-span-1 flex items-center justify-center border-none bg-black  ">
+    <Card bind:isDeepDiveOpen class="group row-span-1 flex items-center justify-center border-none bg-black md:col-span-1  ">
       <div class="flex h-full w-full flex-col">
-        <video muted playsinline loop autoplay preload="metadata" class="lozad h-full w-full rounded-lg object-cover object-center active:!pointer-events-none" data-poster="/assets/images/jpg/lettherebelife_thumbnail.jpg">
+        <video muted playsinline loop autoplay preload="metadata" class="lozad h-full w-full object-cover object-center active:!pointer-events-none md:rounded-lg" data-poster="/assets/images/jpg/lettherebelife_thumbnail.jpg">
           <source data-src="/assets/videos/webm/lettherebelife.webm" type="video/webm" />
           <source data-src="/assets/videos/mp4/lettherebelife.mp4" type="video/mp4" />
         </video>
