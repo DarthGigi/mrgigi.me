@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Card from '$lib/components/Card.svelte';
   import DeepdiveCloseBtn from '$lib/components/deepdiveCloseBtn.svelte';
   import ProgressBar from '$lib/components/progressBar.svelte';
@@ -7,12 +7,15 @@
   import lozad from 'lozad';
   import { onMount } from 'svelte';
 
+  let lettherebelife: HTMLVideoElement;
+
   onMount(async () => {
     lozad('.lozad', {
       rootMargin: '10px 0px',
       threshold: 0.3,
       enableAutoReload: true
     }).observe();
+    lettherebelife = document.getElementById('lettherebelife') as HTMLVideoElement;
   });
 
   let isDeepDiveOpen = false;
@@ -20,30 +23,86 @@
 
 <Transition unmount={false} show={!isDeepDiveOpen} class="flex h-screen items-center justify-center transition-transform duration-1000" leave="transition ease-in-out duration-1000 transform" leaveTo="translate-x-[calc(100vw*-1_+_10vw)]" leaveFrom="translate-x-0" enter="transition ease-in-out duration-1000 transform" enterFrom="translate-x-[calc(100vw*-1_+_10vw)]" enterTo="translate-x-0">
   <div class="grid w-full max-w-[980px] auto-rows-[18rem] grid-cols-1 gap-5 md:grid-cols-[21rem_11rem_21rem]">
-    <Card class="group row-span-2 flex items-center justify-center bg-black md:col-span-2  ">
+    <Card class="group row-span-2 flex items-center justify-center bg-black md:col-span-2">
       <div class="absolute top-0 -z-10 h-0 w-full bg-gradient-to-b from-[#726C4C] to-[#4D4D4D] transition-all duration-300 ease-in group-hover:h-full" />
       <div class="flex h-full w-full flex-col">
         <h2 class="relative mt-6 w-full bg-gradient-to-b from-[#726C4C] to-[#4D4D4D] bg-clip-text text-6xl font-semibold text-transparent transition-colors delay-100 duration-300 group-hover:text-black">Meet Me.</h2>
         <img src="/assets/images/gigi/Gigi3.png" alt="Waving Memoji" />
       </div>
     </Card>
-    <Card bind:isDeepDiveOpen class="group row-span-1 flex items-center justify-center bg-black md:col-span-1  ">
-      <div class="flex h-full w-full flex-col">
-        <h3 class="relative flex h-full w-full flex-col items-center justify-between py-6 text-4xl font-semibold">
-          <pre class="relative inline-block -translate-x-full overflow-hidden bg-black text-white text-opacity-20 transition-all duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">&lt;h3&gt;</pre>
-          <span class="relative inline-block -translate-x-1/2 overflow-hidden bg-black text-white text-opacity-20 transition-all delay-100 duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:delay-100 before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">Pro</span>
-          <span class="relative inline-block translate-x-0 overflow-hidden bg-black text-white text-opacity-20 transition-all delay-200 duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:delay-200 before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">gram</span>
-          <span class="relative inline-block translate-x-1/2 overflow-hidden bg-black text-white text-opacity-20 transition-all delay-300 duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:delay-300 before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">ing</span>
-          <pre class="relative inline-block translate-x-full overflow-hidden bg-black text-white text-opacity-20 transition-all delay-[400ms] duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:delay-[400ms] before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">&lt;/h3&gt;</pre>
-        </h3>
+    <Card bind:isDeepDiveOpen class="group relative row-span-1 flex h-full w-full flex-col items-center justify-center rounded-none !border-0 bg-black transition-all duration-300 md:col-span-1 md:overflow-visible">
+      <div class="relative flex h-full w-full flex-col items-start justify-between border-2 border-x-0 border-b-0 border-neutral-700/40 px-4 pt-6 text-4xl font-semibold transition-all duration-200 group-hover:translate-x-12 group-hover:rotate-[-45deg] group-hover:skew-x-[12deg] md:rounded-t-3xl md:border-x-2">
+        <pre class="relative block overflow-hidden bg-black text-white text-opacity-20 transition-all duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">&lt;h3&gt;</pre>
+        <div class="relative flex w-full flex-col items-center justify-center">
+          <span class="relative block -translate-x-full overflow-hidden bg-black text-white text-opacity-20 transition-all delay-300 duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:delay-300 before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">Pro</span>
+        </div>
+      </div>
+      <div class="relative flex h-full w-full flex-col items-center justify-between border-neutral-700/40 text-4xl font-semibold transition-all duration-200 group-hover:-translate-x-32 group-hover:rotate-[32deg] group-hover:skew-x-[-32deg] md:border-x-2">
+        <span class="relative block overflow-hidden bg-black text-white text-opacity-20 transition-all delay-200 duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:delay-200 before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">gram</span>
+        <span class="relative block translate-x-1/2 overflow-hidden bg-black text-white text-opacity-20 transition-all delay-300 duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:delay-300 before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">ming</span>
+      </div>
+      <div class="relative flex h-full w-full flex-row items-center justify-end border-2 border-x-0 border-t-0 border-neutral-700/40 px-4 text-4xl font-semibold transition-all duration-200 group-hover:translate-x-24 group-hover:rotate-[24deg] group-hover:skew-x-[24deg] md:rounded-b-3xl md:border-x-2">
+        <pre class="relative block overflow-hidden bg-black text-white text-opacity-20 transition-all delay-[400ms] duration-300 ease-linear before:absolute before:left-0 before:block before:h-full before:w-0 before:bg-purple-600 before:mix-blend-darken before:transition-all before:delay-[400ms] before:duration-300 before:ease-linear before:content-[''] group-hover:text-purple-400 group-hover:text-opacity-100 group-hover:before:w-full">&lt;/h3&gt;</pre>
       </div>
     </Card>
-    <Card class="group row-span-1 flex items-center justify-center border-none bg-black md:col-span-1  ">
-      <div class="flex h-full w-full flex-col">
-        <video muted playsinline loop autoplay preload="metadata" class="lozad h-full w-full object-cover object-center active:!pointer-events-none md:rounded-lg" data-poster="/assets/images/jpg/lettherebelife_thumbnail.jpg">
+    <Card class="group row-span-1 flex items-center justify-center border-none bg-[#06273b] md:col-span-1">
+      <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
+      <div
+        class="flex h-full w-full flex-col"
+        on:mouseover={() => {
+          if (lettherebelife) {
+            lettherebelife.play();
+          }
+        }}
+        on:mouseleave={() => {
+          setTimeout(() => {
+            if (lettherebelife) {
+              lettherebelife.pause();
+            }
+          }, 1000);
+        }}
+      >
+        <video
+          id="lettherebelife"
+          muted
+          playsinline
+          loop
+          preload="metadata"
+          class="lozad h-full w-full object-cover object-center active:!pointer-events-none md:rounded-lg"
+          data-poster="/assets/images/jpg/lettherebelife_thumbnail.jpg"
+          on:loadedmetadata={(e) => {
+            // set start time to 1/3 of the video
+            e.target.currentTime = 22;
+          }}
+        >
           <source data-src="/assets/videos/webm/lettherebelife.webm" type="video/webm" />
           <source data-src="/assets/videos/mp4/lettherebelife.mp4" type="video/mp4" />
         </video>
+        <!-- Sound button for the video -->
+
+        <button
+          type="button"
+          class="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 transform text-white opacity-0 transition-all delay-500 duration-300 group-hover:-translate-y-3 group-hover:opacity-20"
+          on:click={() => {
+            if (lettherebelife.muted) {
+              lettherebelife.muted = false;
+            } else {
+              lettherebelife.muted = true;
+            }
+          }}
+        >
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            {#if lettherebelife}
+              {#if lettherebelife.muted}
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+              {:else}
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              {/if}
+            {/if}
+          </svg>
+        </button>
       </div>
     </Card>
   </div>
