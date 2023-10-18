@@ -3,11 +3,11 @@
   import Card from '$lib/components/Card.svelte';
   import Trafficlight from '$lib/components/Trafficlight.svelte';
   import DeepdiveCloseBtn from '$lib/components/deepdiveCloseBtn.svelte';
-  import ProgressBar from '$lib/components/progressBar.svelte';
-  import CarouselImg from '$lib/components/carouselImg.svelte';
-  import VerticalCarousel from '$lib/components/VerticalCarousel.svelte';
+  import Image from '$lib/components/image.svelte';
+  import Space from '$lib/deepdives/Space.svelte';
   import Deepdive from '$lib/layout/Deepdive.svelte';
   import Window from '$lib/layout/Window.svelte';
+  import type { Picture } from '$lib/types';
   import { Transition } from '@rgossiaux/svelte-headlessui';
   import { Draggable } from 'gsap/dist/Draggable';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -18,6 +18,12 @@
   import markdown from 'svelte-highlight/languages/markdown';
   import ts from 'svelte-highlight/languages/typescript';
   import 'svelte-highlight/styles/github-dark.css';
+
+  const images: Record<string, Picture> = import.meta.glob('/src/assets/images/!(melodysheep|kurzgesagt)/*.{png,jpg,jpeg}', {
+    import: 'default',
+    eager: true
+  });
+
   if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
   }
@@ -71,22 +77,6 @@
     return () => ctx.revert(); // <- Cleanup!
   });
 
-  const melodysheepCards = [
-    { src: '/assets/images/melodysheep/Blinker.png', caption: 'Courtesy of melodysheep.com', alt: 'Blinker' },
-    { src: '/assets/images/melodysheep/COSMIC_BRETHREN2.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Cosmic Brethren' },
-    { src: '/assets/images/melodysheep/Dyson Sphere 2.png', caption: 'Courtesy of melodysheep.com', alt: 'Dyson Sphere' },
-    { src: '/assets/images/melodysheep/Dyson Swarm.png', caption: 'Courtesy of melodysheep.com', alt: 'Dyson Swarm' },
-    { src: '/assets/images/melodysheep/MUSEUM_EXHIBIT2.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum Exhibit' },
-    { src: '/assets/images/melodysheep/MUSEUM_EYEWALL.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum Eyewall' },
-    { src: '/assets/images/melodysheep/MUSEUM_OCULA2.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum Ocula' },
-    { src: '/assets/images/melodysheep/MUSEUM_REPLICA_K2.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum Replica' },
-    { src: '/assets/images/melodysheep/MUSEUM.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum' },
-    { src: '/assets/images/melodysheep/Preserve Planet.png', caption: 'Courtesy of melodysheep.com', alt: 'Preserve Planet' },
-    { src: '/assets/images/melodysheep/RedPurpleNebula.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Red Purple Nebula' },
-    { src: '/assets/images/melodysheep/TREE_OF_LIFE.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Tree of Life' },
-    { src: '/assets/images/melodysheep/TwinPlanets.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Twin Planets' }
-  ].sort(() => Math.random() - 0.5);
-
   let isDeepDiveAboutOpen = false;
   let isDeepDiveCodingOpen = false;
   let isDeepDiveSpaceOpen = false;
@@ -118,6 +108,7 @@
       type="button"
       class="flex flex-shrink rounded-lg bg-red-700 px-4 py-2 text-red-200"
       on:click|self={(e) => {
+        // @ts-ignore
         const parent = e.target.parentElement;
         parent.classList.add('-translate-y-full');
         setTimeout(() => {
@@ -134,7 +125,7 @@
       <div class="absolute top-0 -z-10 h-0 w-full bg-gradient-to-b from-[#726C4C] to-[#4D4D4D] transition-all duration-300 ease-in group-hover:h-full" />
       <div class="flex h-full w-full flex-col">
         <h2 class="relative mt-6 w-full bg-gradient-to-b from-[#726C4C] to-[#4D4D4D] bg-clip-text text-6xl font-semibold text-transparent transition-colors delay-100 duration-300 group-hover:text-black">Meet Me.</h2>
-        <img src="/assets/images/gigi/Gigi3.png" class="select-none" alt="Waving Memoji" />
+        <img src="/src/assets/images/gigi/Gigi3.png" class="w-full select-none" alt="Waving Memoji" />
       </div>
     </Card>
     <Card bind:isDeepDiveOpen={isDeepDiveCodingOpen} class="group row-span-1 flex h-full w-full flex-col items-center justify-center rounded-none !border-0 bg-black transition-all duration-300 md:col-span-1 md:overflow-visible">
@@ -176,7 +167,7 @@
           loop
           preload="metadata"
           class="lozad h-full w-full object-cover object-center active:!pointer-events-none md:rounded-lg"
-          data-poster="/assets/images/jpg/lettherebelife_thumbnail.jpg"
+          data-poster="/src/assets/images/jpg/lettherebelife_thumbnail.jpg"
           on:loadedmetadata={(e) => {
             // set start time to 1/3 of the video
             // @ts-ignore
@@ -210,7 +201,7 @@
         </button>
       </div>
     </Card>
-    <Banner class="col-span-full row-span-1 flex items-center justify-center !overflow-visible rounded-none border-none bg-[url('/assets/images/pro-container-image.png')] bg-cover  bg-center md:col-span-full">
+    <Banner class="col-span-full row-span-1 flex items-center justify-center !overflow-visible rounded-none border-none bg-[url('/src/assets/images/pro-container-image.png')] bg-cover  bg-center md:col-span-full">
       <Window placeholder="My Projects" class="macoswindow relative z-20 h-2/3 overflow-hidden md:absolute  md:left-1/2 md:h-auto md:-translate-x-1/2 md:translate-y-1/2 md:overflow-visible" style="-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) var(--gradient-start), rgba(0, 0, 0, 0) var(--gradient-end))" bind:this={macosWindow}>
         <Highlight
           code={`// Import the Window component
@@ -274,7 +265,7 @@ Window.trafficlight.addEventListener('click', (e) => {
             <div class="absolute z-0 h-5 w-20 flex-shrink-0 rounded-[50px] bg-neutral-400 transition-all duration-500 group-hover:h-full group-hover:w-full group-hover:rounded-none"></div>
           </div>
           <div class="relative -ml-px inline-flex w-0 flex-1 overflow-hidden">
-            <span class="relative z-10 inline-flex w-0 flex-1 items-center justify-center overflow-hidden py-4 text-sm font-medium text-neutral-200 transition-all duration-300 group-hover:scale-125 group-hover:text-neutral-900"><img class="pointer-events-none mr-1 h-6 w-6" src="/assets/images/png/coin.png" alt="Coin icon" /> 1m <span class="ml-1 text-sm text-neutral-200/50 transition-all duration-300 group-hover:ml-0 group-hover:text-neutral-900/0">/</span> <span class="text-sm text-neutral-200/50 transition-all duration-300 group-hover:-ml-0.5 group-hover:text-neutral-900">each</span></span>
+            <span class="relative z-10 inline-flex w-0 flex-1 items-center justify-center overflow-hidden py-4 text-sm font-medium text-neutral-200 transition-all duration-300 group-hover:scale-125 group-hover:text-neutral-900"><Image class="pointer-events-none mr-1 h-6 w-6" src={images['/src/assets/images/png/coin.png']} alt="Coin icon" /> 1m <span class="ml-1 text-sm text-neutral-200/50 transition-all duration-300 group-hover:ml-0 group-hover:text-neutral-900/0">/</span> <span class="text-sm text-neutral-200/50 transition-all duration-300 group-hover:-ml-0.5 group-hover:text-neutral-900">each</span></span>
             <div class="absolute z-0 h-0 w-full flex-shrink-0 bg-neutral-400 transition-all duration-500 group-hover:h-full"></div>
           </div>
           <div class="relative inline-flex w-0 flex-1 items-center justify-center overflow-hidden rounded-br-lg text-sm font-medium text-neutral-200">
@@ -315,99 +306,7 @@ Window.trafficlight.addEventListener('click', (e) => {
   <DeepdiveCloseBtn slot="button" bind:isDeepDiveOpen={isDeepDiveCodingOpen} />
 </Deepdive>
 
-<Deepdive on:scroll={(e) => (scrollProgress = e.detail)} class="w-full bg-[url('/assets/images/melodysheep/BROWN_DWARF.jpeg')] bg-cover bg-top bg-no-repeat" bind:isDeepDiveOpen={isDeepDiveSpaceOpen}>
-  <div class="fixed left-1/2 top-0 z-20 flex -translate-x-1/2 items-center justify-center">
-    <h2 class="relative mt-6 w-full bg-[url('https://www.urbanexile.net/wordpress/wp-content/uploads/2015/03/Starfield_Instancing_white_uniform.png')] bg-cover bg-clip-text bg-center text-9xl font-bold text-transparent transition-colors delay-100 duration-300 group-hover:text-black">Space.</h2>
-  </div>
-  <div class="relative flex flex-shrink-0 backdrop-blur">
-    <div class="relative mx-24 flex w-full items-center gap-24">
-      <p class="relative z-20 max-w-2xl text-2xl text-white">I have a lot of interest in space and science, from black holes to the particles that make up our universe. I love to learn new things about the universe.</p>
-      <VerticalCarousel id="melodysheep" text="Courtesy of melodysheep.com">
-        {#each melodysheepCards as card}
-          <CarouselImg src={card.src} caption={card.caption} alt={card.alt} />
-        {/each}
-      </VerticalCarousel>
-
-      <div class="relative z-50">
-        <p class="max-w-2xl text-2xl text-white">
-          That's why I love to watch videos from <a href="https://www.youtube.com/user/Melodysheep" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-400">Melodysheep</a>, one of the best space channels on Youtube. The videos they create are just stunning to look at. Covering topics from the future of the universe, to visualizing the various alien lifes that could exist.
-        </p>
-        <figure class="mx-auto max-w-screen-md text-center">
-          <svg class="mx-auto mb-3 h-10 w-10 text-neutral-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
-            <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
-          </svg>
-          <blockquote>
-            <p class="text-2xl font-medium italic text-white">"Tickle your brain."</p>
-          </blockquote>
-          <figcaption class="mt-6 flex items-center justify-center space-x-3">
-            <img class="h-auto w-6 rounded-full" src="https://images.squarespace-cdn.com/content/v1/595f00fc36e5d3078c629dd7/1499459636422-6BJCC2I10REUN1FHOLHA/image-asset.png?format=24w" alt="Melodysheep Logo" />
-            <div class="flex items-center divide-x-2 divide-neutral-700">
-              <cite class="pr-3 font-medium text-white">Melodysheep</cite>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-
-      <VerticalCarousel id="kurzgesagt" text="Courtesy of melodysheep.com" reversed={true}>
-        {#each melodysheepCards as card}
-          <CarouselImg src={card.src} caption={card.caption} alt={card.alt} />
-        {/each}
-      </VerticalCarousel>
-
-      <div class="relative z-50">
-        <p class="max-w-2xl text-2xl text-white">
-          I also enjoy watching videos from <a href="https://www.youtube.com/user/Kurzgesagt" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-400">Kurzgesagt</a>, one of the biggest science channels on Youtube. The videos they create are supported by NGOs, scientists and leading brands; and are beautifully animated.
-        </p>
-        <figure class="mx-auto max-w-screen-md text-center">
-          <svg class="mx-auto mb-3 h-10 w-10 text-neutral-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
-            <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
-          </svg>
-          <blockquote>
-            <p class="text-2xl font-medium italic text-white">"We want to make science look beautiful. Because it is beautiful."</p>
-          </blockquote>
-          <figcaption class="mt-6 flex items-center justify-center space-x-3">
-            <img class="h-6 w-6 rounded-full" src="https://kurzgesagt.org/wp-content/themes/kurzgesagt/library/images/logo.gif" alt="Spinning Kurzgesagt Logo" />
-            <div class="flex items-center divide-x-2 divide-neutral-700">
-              <cite class="pr-3 font-medium text-white">Kurzgesagt</cite>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-    <div class="absolute inset-0 z-0 w-full bg-gradient-to-b from-black from-15%" />
-  </div>
-
-  <DeepdiveCloseBtn on:click={() => spaceMusic.pause()} invert={true} class="bg-black" slot="button" bind:isDeepDiveOpen={isDeepDiveSpaceOpen} bind:scrollProgress />
-  <ProgressBar slot="progress" bind:scrollProgress class="from-[#0e2036] via-black" />
-  <button
-    slot="extra"
-    type="button"
-    class="relative z-10 rounded-full bg-white text-black"
-    on:click={() => {
-      if (spaceMusic.paused) {
-        spaceMusic.play();
-      } else {
-        spaceMusic.pause();
-      }
-      if (spaceMusic.muted) {
-        spaceMusic.muted = false;
-      } else {
-        spaceMusic.muted = true;
-      }
-    }}>
-    <svg class="p-2" width="41" height="41" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      {#if spaceMusic}
-        {#if spaceMusic.muted}
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-        {:else}
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-        {/if}
-      {/if}
-    </svg>
-  </button>
-  <audio bind:this={spaceMusic} class="hidden" loop autoplay src="/assets/audio/mp3/Sights_of_Space_Bside_01_mp3.mp3" />
-</Deepdive>
+<Space bind:isDeepDiveSpaceOpen />
 
 <Deepdive bind:isDeepDiveOpen={isDeepDiveMinionOpen}>
   <DeepdiveCloseBtn slot="button" bind:isDeepDiveOpen={isDeepDiveMinionOpen} />
