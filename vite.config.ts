@@ -7,8 +7,8 @@ export default defineConfig({
     sveltekit(),
     imagetools({
       defaultDirectives: new URLSearchParams({
-        format: 'avif;webp;jpeg;png',
-        w: '320;640;1280;1440;1920;2560;3840',
+        format: 'avif;webp;jpeg',
+        w: '320;640;1280;1920',
         as: 'picture'
       })
     })
