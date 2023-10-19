@@ -1,8 +1,18 @@
 <script lang="ts">
+  import videoThumbnail from '$assets/images/jpg/lettherebelife_thumbnail.jpg';
   import Card from '$lib/components/Card.svelte';
   import type { Picture } from '$lib/types';
+  import lozad from 'lozad';
+  import { onMount } from 'svelte';
 
-  import videoThumbnail from '$assets/images/jpg/lettherebelife_thumbnail.jpg';
+  onMount(() => {
+    lozad('.lozad', {
+      rootMargin: '10px 0px',
+      threshold: 0.3,
+      enableAutoReload: true
+    }).observe();
+  });
+
   const videoThumbnailImg = videoThumbnail as unknown as Picture;
 
   export let isDeepDiveOpen: boolean;
@@ -11,7 +21,7 @@
 
 <Card bind:isDeepDiveOpen class="group row-span-1 flex items-center justify-center border-none bg-[#06273b] md:col-span-1">
   <div class="flex h-full w-full flex-col" on:mouseover={() => lettherebelife.play()} on:mouseleave={() => setTimeout(() => lettherebelife.pause(), 1000)} on:focus={() => lettherebelife.play()} on:blur={() => setTimeout(() => lettherebelife.pause(), 1000)} role="button" tabindex="0">
-    <video bind:this={lettherebelife} muted playsinline loop preload="metadata" class="lozad h-full w-full object-cover object-center active:!pointer-events-none md:rounded-lg" data-poster={videoThumbnailImg.img.src} on:loadedmetadata={() => (lettherebelife.currentTime = 22)}>
+    <video bind:this={lettherebelife} muted playsinline loop preload="metadata" class="lozad h-full w-full object-cover object-center active:!pointer-events-none md:rounded-lg" poster={videoThumbnailImg.img.src} on:loadedmetadata={() => (lettherebelife.currentTime = 22)}>
       <source data-src="/assets/videos/webm/lettherebelife.webm" type="video/webm" />
       <source data-src="/assets/videos/mp4/lettherebelife.mp4" type="video/mp4" />
     </video>

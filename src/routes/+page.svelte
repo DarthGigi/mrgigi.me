@@ -11,17 +11,7 @@
   import Sirius from '$lib/deepdives/Sirius.svelte';
   import Space from '$lib/deepdives/Space.svelte';
   import { Transition } from '@rgossiaux/svelte-headlessui';
-  import lozad from 'lozad';
-  import { onMount } from 'svelte';
   import 'svelte-highlight/styles/github-dark.css';
-
-  onMount(() => {
-    lozad('.lozad', {
-      rootMargin: '10px 0px',
-      threshold: 0.3,
-      enableAutoReload: true
-    }).observe();
-  });
 
   let isDeepDiveAboutOpen = false;
   let isDeepDiveCodingOpen = false;
@@ -33,7 +23,7 @@
   $: isAnyDeepDiveOpen = !isDeepDiveAboutOpen && !isDeepDiveCodingOpen && !isDeepDiveSpaceOpen && !isDeepDiveSiriusOpen && !isDeepDiveMinionOpen;
 </script>
 
-<Transition unmount={true} show={isAnyDeepDiveOpen} leave="transition ease-in-out duration-1000 transform" leaveTo="translate-x-[calc(100vw*-1_+_10vw)]" leaveFrom="translate-x-0" enter="transition ease-in-out duration-1000 transform" enterFrom="translate-x-[calc(100vw*-1_+_10vw)]" enterTo="translate-x-0">
+<Transition unmount={false} show={isAnyDeepDiveOpen} leave="transition ease-in-out duration-1000 transform" leaveTo="translate-x-[calc(100vw*-1_+_10vw)]" leaveFrom="translate-x-0" enter="transition ease-in-out duration-1000 transform" enterFrom="translate-x-[calc(100vw*-1_+_10vw)]" enterTo="translate-x-0">
   <div class="fixed top-0 z-50 flex h-auto w-full flex-grow items-center justify-between bg-red-500 px-4 py-2 transition-all duration-300" bind:this={notification}>
     <div class="w-14 flex-shrink" />
     <p class="max-w-7xl flex-grow text-center text-white/80">Please keep in mind that this website is not finished yet and is in its very early stages of development. Some things may not work as expected or at all, some things may be missing, and some things may be broken. If you find any bugs or have any suggestions, please let me know.</p>
@@ -51,7 +41,7 @@
       </svg>
     </button>
   </div>
-  <div class="mx-auto grid h-auto max-w-[980px] auto-rows-[18rem] grid-cols-1 justify-center gap-2 py-4 md:grid-cols-[21rem_11rem_21rem] md:gap-5">
+  <div class="mx-auto grid h-full max-w-[980px] auto-rows-[18rem] grid-cols-1 justify-center gap-2 py-4 md:grid-cols-[21rem_11rem_21rem] md:gap-5">
     <AboutCard bind:isDeepDiveOpen={isDeepDiveAboutOpen} />
     <CodingCard bind:isDeepDiveOpen={isDeepDiveCodingOpen} />
     <SpaceCard bind:isDeepDiveOpen={isDeepDiveSpaceOpen} />
