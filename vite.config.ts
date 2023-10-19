@@ -8,7 +8,7 @@ export default defineConfig({
     imagetools({
       defaultDirectives: new URLSearchParams({
         format: 'avif;webp;jpeg',
-        w: '320;640;1280;1920',
+        w: '640;1280;1920',
         as: 'picture'
       })
     })
