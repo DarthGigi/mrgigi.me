@@ -19,6 +19,26 @@
     const ctx = gsap.context(() => {
       let mm = gsap.matchMedia();
       gsap.set('.macoswindow', { '--gradient-start': '0%', '--gradient-end': '40%' });
+      gsap.fromTo(
+        '.macoswindow',
+        {
+          scale: 0.8,
+          opacity: 0,
+          y: 100,
+          '--gradient-start': '0%',
+          '--gradient-end': '10%',
+          duration: 1
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          display: 'block',
+          y: 60,
+          '--gradient-start': '0%',
+          '--gradient-end': '50%',
+          duration: 1
+        }
+      );
       mm.add('(min-width: 640px)', () => {
         let tl = gsap.timeline({
           scrollTrigger: {
@@ -53,7 +73,7 @@
 
 <Banner class="col-span-full row-span-1 flex items-center justify-center !overflow-visible rounded-none border-none md:col-span-full">
   <Image class="absolute inset-0 h-full w-full rounded-none object-cover object-center md:rounded-3xl" src={ProContainerImg} alt="Pro Container Image" loading="eager" />
-  <Window placeholder="My Projects" class="macoswindow relative z-20 h-2/3 overflow-hidden md:absolute  md:left-1/2 md:h-auto md:-translate-x-1/2 md:translate-y-1/2 md:overflow-visible" style="-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) var(--gradient-start), rgba(0, 0, 0, 0) var(--gradient-end))">
+  <Window placeholder="My Projects" class="macoswindow relative z-20 h-2/3 overflow-hidden opacity-0 md:absolute md:left-1/2 md:h-auto md:-translate-x-1/2 md:translate-y-1/2" style="-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) var(--gradient-start), rgba(0, 0, 0, 0) var(--gradient-end));">
     <Highlight
       code={`// Import the Window component
 import Window from '$lib/components/Window.svelte';
