@@ -1,4 +1,3 @@
-//@ts-nocheck
 /*
 This helper function makes a group of elements animate along the y-axis in a seamless, responsive loop.
 

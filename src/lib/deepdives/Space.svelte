@@ -7,6 +7,13 @@
   import ProgressBar from '$lib/components/progressBar.svelte';
   import Deepdive from '$lib/layout/Deepdive.svelte';
   import type { Picture } from '$lib/types';
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+  function changevolume() {
+    dispatch('volumechanged');
+  }
 
   const Background: Picture = BackgroundImage as unknown as Picture;
   const pictures: Record<string, Picture> = import.meta.glob('$assets/images/{melodysheep,kurzgesagt}/*.{png,jpg,jpeg}', {
@@ -30,13 +37,29 @@
     { src: 'melodysheep/TwinPlanets.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Twin Planets' }
   ].sort(() => Math.random() - 0.5);
 
+  const kurzgesagtCards = [
+    { src: 'kurzgesagt/Black Hole Stars.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Black Hole Stars' },
+    { src: 'kurzgesagt/Black Holes Remake.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Black Holes Remake' },
+    { src: 'kurzgesagt/Largest Black Hole 1.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Black Hole' },
+    { src: 'kurzgesagt/Largest Black Hole 2.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Black Hole' },
+    { src: 'kurzgesagt/Largest Black Hole 3.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Black Hole' },
+    { src: 'kurzgesagt/Largest Black Hole.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Black Hole' },
+    { src: 'kurzgesagt/Largest Star.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Star' },
+    { src: 'kurzgesagt/Neutron Stars.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Neutron Stars' },
+    { src: 'kurzgesagt/Solar Flares.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Solar Flares' },
+    { src: 'kurzgesagt/Stellar Engine.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Stellar Engine' },
+    { src: 'kurzgesagt/Supernova Death.jpg', caption: 'Courtesy of kurzgesagt.org', alt: 'Supernova Death' },
+    { src: 'kurzgesagt/The Egg.png', caption: 'Courtesy of kurzgesagt.org', alt: 'The Egg' }
+  ].sort(() => Math.random() - 0.5);
+
   export let isDeepDiveSpaceOpen: boolean;
   let scrollProgress = 0;
   let spaceMusic: HTMLAudioElement;
+  let volume = 0.3;
 </script>
 
 <Deepdive on:scroll={(e) => (scrollProgress = e.detail)} class="" bind:isDeepDiveOpen={isDeepDiveSpaceOpen}>
-  <Image class="fixed inset-0 h-full w-full bg-fixed object-cover object-center" src={Background} alt="Brown Dwarf" />
+  <Image class="fixed inset-0 h-full w-full bg-fixed object-cover object-center brightness-[60%]" src={Background} alt="Brown Dwarf" />
   <div class="fixed left-1/2 top-0 z-20 flex -translate-x-1/2 items-center justify-center">
     <h2 class="relative mt-6 w-full bg-[url('https://www.urbanexile.net/wordpress/wp-content/uploads/2015/03/Starfield_Instancing_white_uniform.png')] bg-cover bg-clip-text bg-center text-9xl font-bold text-transparent transition-colors delay-100 duration-300 group-hover:text-black">Space.</h2>
   </div>
@@ -70,7 +93,7 @@
       </div>
 
       <VerticalCarousel id="kurzgesagt" text="Courtesy of melodysheep.com" reversed={true}>
-        {#each melodysheepCards as card}
+        {#each kurzgesagtCards as card}
           <CarouselImg src={pictures[`/src/assets/images/${card.src}`]} caption={card.caption} alt={card.alt} />
         {/each}
       </VerticalCarousel>
@@ -95,37 +118,43 @@
         </figure>
       </div>
     </div>
-    <div class="absolute inset-0 z-0 w-full bg-gradient-to-b from-black from-15%" />
+    <div class="pointer-events-none absolute inset-0 z-40 h-2/6 w-full bg-gradient-to-b from-black from-45%" />
   </div>
 
   <DeepdiveCloseBtn on:click={() => spaceMusic.pause()} invert={true} class="bg-black" slot="button" bind:isDeepDiveOpen={isDeepDiveSpaceOpen} bind:scrollProgress />
   <ProgressBar slot="progress" bind:scrollProgress class="from-[#0e2036] via-black" />
-  <button
-    slot="extra"
-    type="button"
-    class="relative z-10 rounded-full bg-white text-black"
-    on:click={() => {
-      if (spaceMusic.paused) {
-        spaceMusic.play();
-      } else {
-        spaceMusic.pause();
-      }
-      if (spaceMusic.muted) {
-        spaceMusic.muted = false;
-      } else {
-        spaceMusic.muted = true;
-      }
-    }}>
-    <svg class="p-2" width="41" height="41" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      {#if spaceMusic}
-        {#if spaceMusic.muted}
+  <div class="group relative" slot="extra">
+    <div class="absolute -top-4 left-1/2 mb-10 flex -translate-x-1/2 -translate-y-1/2 scale-50 items-center justify-center rounded-lg bg-white opacity-0 transition-all duration-300 group-hover:-translate-y-full group-hover:scale-100 group-hover:opacity-100">
+      <input type="range" min="0" max="1" step="0.01" bind:value={volume} class="mx-2 py-2 accent-black" />
+    </div>
+    <button
+      type="button"
+      class="relative z-10 rounded-full bg-white text-black"
+      on:click={() => {
+        if (spaceMusic.paused) {
+          spaceMusic.play();
+          volume = 0.3;
+        } else {
+          spaceMusic.pause();
+          volume = 0;
+        }
+        if (spaceMusic.muted) {
+          spaceMusic.muted = false;
+          volume = 0.3;
+        } else {
+          spaceMusic.muted = true;
+          volume = 0;
+        }
+      }}>
+      <svg class="p-2" width="41" height="41" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        {#if volume === 0}
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
         {:else}
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
         {/if}
-      {/if}
-    </svg>
-  </button>
-  <audio bind:this={spaceMusic} class="hidden" loop autoplay src="/assets/audio/mp3/Sights_of_Space_Bside_01_mp3.mp3" />
+      </svg>
+    </button>
+  </div>
+  <audio bind:this={spaceMusic} bind:volume class="hidden" loop autoplay src="/assets/audio/mp3/Sights_of_Space_Bside_01_mp3.mp3" />
 </Deepdive>
