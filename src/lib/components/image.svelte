@@ -13,9 +13,10 @@
   export { classes as class };
 </script>
 
-<picture>
-  {#each Object.entries(src.sources) as [format, sources]}
-    <source srcset={sources} type={'image/' + format} />
+<picture class="pointer-events-none">
+  {#each Object.entries(src.sources) as [format, images]}
+    {@const sizes = images?.split(',').map((img) => img.match(/(\d+)w/)?.[1])}
+    <source srcset={images} type={'image/' + format} sizes={sizes.map((size) => `(max-width: ${size}px) ${size}px`).join(', ')} />
   {/each}
 
   <img src={src.img.src} {alt} class={classes} {loading} {decoding} {draggable} width={src.img.w} height={src.img.h} />
