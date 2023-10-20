@@ -6,11 +6,13 @@ export default defineConfig({
   plugins: [
     sveltekit(),
     imagetools({
-      defaultDirectives: new URLSearchParams({
-        format: 'avif;webp;jpeg',
-        w: '640;1280;1920',
-        as: 'picture'
-      })
+      defaultDirectives: (url) =>
+        new URLSearchParams({
+          format: 'avif;webp;' + url.pathname.substring(url.pathname.lastIndexOf('.') + 1),
+          w: '500;900;1200',
+          as: 'picture',
+          metadata: 'true'
+        })
     })
   ]
 });
