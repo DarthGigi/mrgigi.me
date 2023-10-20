@@ -82,6 +82,9 @@ devDependencies:
   vite-imagetools:
     specifier: ^6.0.0
     version: 6.0.0
+  web-vitals:
+    specifier: ^3.5.0
+    version: 3.5.0
 
 packages:
 
@@ -2243,6 +2246,10 @@ packages:
         optional: true
     dependencies:
       vite: 4.4.11
+    dev: true
+
+  /web-vitals@3.5.0:
+    resolution: {integrity: sha512-f5YnCHVG9Y6uLCePD4tY8bO/Ge15NPEQWtvm3tPzDKygloiqtb4SVqRHBcrIAqo2ztqX5XueqDn97zHF0LdT6w==}
     dev: true
 
   /webidl-conversions@3.0.1:
