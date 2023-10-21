@@ -68,7 +68,7 @@
       <p class="relative z-20 max-w-2xl text-2xl text-white">I have a lot of interest in space and science, from black holes to the particles that make up our universe. I love to learn new things about the universe.</p>
       <VerticalCarousel id="melodysheep" text="Courtesy of melodysheep.com">
         {#each melodysheepCards as card}
-          <CarouselImg src={pictures[`/src/assets/images/${card.src}`]} caption={card.caption} alt={card.alt} />
+          <CarouselImg src={pictures[`/src/assets/images/${card.src}`]} alt={card.alt} />
         {/each}
       </VerticalCarousel>
 
@@ -94,7 +94,7 @@
 
       <VerticalCarousel id="kurzgesagt" text="Courtesy of melodysheep.com" reversed={true}>
         {#each kurzgesagtCards as card}
-          <CarouselImg src={pictures[`/src/assets/images/${card.src}`]} caption={card.caption} alt={card.alt} />
+          <CarouselImg src={pictures[`/src/assets/images/${card.src}`]} alt={card.alt} />
         {/each}
       </VerticalCarousel>
 

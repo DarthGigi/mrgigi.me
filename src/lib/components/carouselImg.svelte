@@ -4,8 +4,6 @@
 
   export let src: Picture;
   export let alt: string;
-
-  export let caption = '';
 </script>
 
 <figure class={`card group relative my-4 block h-96 w-96 text-center ${$$props.class ? $$props.class : ''}`}>
@@ -13,5 +11,5 @@
     <p class="text-lg font-semibold text-white">{alt}</p>
   </div>
   <Image {src} {alt} class="relative z-0 h-full w-full rounded-lg object-cover object-center shadow-md" />
-  <figcaption class="sr-only text-xs text-neutral-500/40">{caption}</figcaption>
+  <figcaption class="sr-only text-xs text-neutral-500/40">{alt}</figcaption>
 </figure>
