@@ -22,34 +22,34 @@
   });
 
   const melodysheepCards = [
-    { src: 'melodysheep/Blinker.png', caption: 'Courtesy of melodysheep.com', alt: 'Blinker' },
-    { src: 'melodysheep/COSMIC_BRETHREN2.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Cosmic Brethren' },
-    { src: 'melodysheep/Dyson Sphere 2.png', caption: 'Courtesy of melodysheep.com', alt: 'Dyson Sphere' },
-    { src: 'melodysheep/Dyson Swarm.png', caption: 'Courtesy of melodysheep.com', alt: 'Dyson Swarm' },
-    { src: 'melodysheep/MUSEUM_EXHIBIT2.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum Exhibit' },
-    { src: 'melodysheep/MUSEUM_EYEWALL.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum Eyewall' },
-    { src: 'melodysheep/MUSEUM_OCULA2.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum Ocula' },
-    { src: 'melodysheep/MUSEUM_REPLICA_K2.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum Replica' },
-    { src: 'melodysheep/MUSEUM.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Museum' },
-    { src: 'melodysheep/Preserve Planet.png', caption: 'Courtesy of melodysheep.com', alt: 'Preserve Planet' },
-    { src: 'melodysheep/RedPurpleNebula.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Red Purple Nebula' },
-    { src: 'melodysheep/TREE_OF_LIFE.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Tree of Life' },
-    { src: 'melodysheep/TwinPlanets.jpeg', caption: 'Courtesy of melodysheep.com', alt: 'Twin Planets' }
+    { src: 'melodysheep/Blinker.png', alt: 'Blinker' },
+    { src: 'melodysheep/COSMIC_BRETHREN2.jpeg', alt: 'Cosmic Brethren' },
+    { src: 'melodysheep/Dyson Sphere 2.png', alt: 'Dyson Sphere' },
+    { src: 'melodysheep/Dyson Swarm.png', alt: 'Dyson Swarm' },
+    { src: 'melodysheep/MUSEUM_EXHIBIT2.jpeg', alt: 'Museum Exhibit' },
+    { src: 'melodysheep/MUSEUM_EYEWALL.jpeg', alt: 'Museum Eyewall' },
+    { src: 'melodysheep/MUSEUM_OCULA2.jpeg', alt: 'Museum Ocula' },
+    { src: 'melodysheep/MUSEUM_REPLICA_K2.jpeg', alt: 'Museum Replica' },
+    { src: 'melodysheep/MUSEUM.jpeg', alt: 'Museum' },
+    { src: 'melodysheep/Preserve Planet.png', alt: 'Preserve Planet' },
+    { src: 'melodysheep/RedPurpleNebula.jpeg', alt: 'Red Purple Nebula' },
+    { src: 'melodysheep/TREE_OF_LIFE.jpeg', alt: 'Tree of Life' },
+    { src: 'melodysheep/TwinPlanets.jpeg', alt: 'Twin Planets' }
   ].sort(() => Math.random() - 0.5);
 
   const kurzgesagtCards = [
-    { src: 'kurzgesagt/Black Hole Stars.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Black Hole Stars' },
-    { src: 'kurzgesagt/Black Holes Remake.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Black Holes Remake' },
-    { src: 'kurzgesagt/Largest Black Hole 1.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Black Hole' },
-    { src: 'kurzgesagt/Largest Black Hole 2.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Black Hole' },
-    { src: 'kurzgesagt/Largest Black Hole 3.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Black Hole' },
-    { src: 'kurzgesagt/Largest Black Hole.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Black Hole' },
-    { src: 'kurzgesagt/Largest Star.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Largest Star' },
-    { src: 'kurzgesagt/Neutron Stars.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Neutron Stars' },
-    { src: 'kurzgesagt/Solar Flares.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Solar Flares' },
-    { src: 'kurzgesagt/Stellar Engine.png', caption: 'Courtesy of kurzgesagt.org', alt: 'Stellar Engine' },
-    { src: 'kurzgesagt/Supernova Death.jpg', caption: 'Courtesy of kurzgesagt.org', alt: 'Supernova Death' },
-    { src: 'kurzgesagt/The Egg.png', caption: 'Courtesy of kurzgesagt.org', alt: 'The Egg' }
+    { src: 'kurzgesagt/Black Hole Stars.png', alt: 'Black Hole Stars' },
+    { src: 'kurzgesagt/Black Holes Remake.png', alt: 'Black Holes Remake' },
+    { src: 'kurzgesagt/Largest Black Hole 1.png', alt: 'Largest Black Hole' },
+    { src: 'kurzgesagt/Largest Black Hole 2.png', alt: 'Largest Black Hole' },
+    { src: 'kurzgesagt/Largest Black Hole 3.png', alt: 'Largest Black Hole' },
+    { src: 'kurzgesagt/Largest Black Hole.png', alt: 'Largest Black Hole' },
+    { src: 'kurzgesagt/Largest Star.png', alt: 'Largest Star' },
+    { src: 'kurzgesagt/Neutron Stars.png', alt: 'Neutron Stars' },
+    { src: 'kurzgesagt/Solar Flares.png', alt: 'Solar Flares' },
+    { src: 'kurzgesagt/Stellar Engine.png', alt: 'Stellar Engine' },
+    { src: 'kurzgesagt/Supernova Death.jpg', alt: 'Supernova Death' },
+    { src: 'kurzgesagt/The Egg.png', alt: 'The Egg' }
   ].sort(() => Math.random() - 0.5);
 
   export let isDeepDiveSpaceOpen: boolean;
