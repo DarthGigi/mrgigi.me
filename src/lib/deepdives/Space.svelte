@@ -7,13 +7,6 @@
   import ProgressBar from '$lib/components/progressBar.svelte';
   import Deepdive from '$lib/layout/Deepdive.svelte';
   import type { Picture } from '$lib/types';
-  import { createEventDispatcher } from 'svelte';
-
-  const dispatch = createEventDispatcher();
-
-  function changevolume() {
-    dispatch('volumechanged');
-  }
 
   const Background: Picture = BackgroundImage as unknown as Picture;
   const pictures: Record<string, Picture> = import.meta.glob('$assets/images/{melodysheep,kurzgesagt}/*.{png,jpg,jpeg}', {
@@ -61,11 +54,11 @@
 <Deepdive on:scroll={(e) => (scrollProgress = e.detail)} class="" bind:isDeepDiveOpen={isDeepDiveSpaceOpen}>
   <Image class="fixed inset-0 h-full w-full bg-fixed object-cover object-center brightness-[60%]" src={Background} alt="Brown Dwarf" />
   <div class="fixed left-1/2 top-0 z-20 flex -translate-x-1/2 items-center justify-center">
-    <h2 class="relative mt-6 w-full bg-[url('https://www.urbanexile.net/wordpress/wp-content/uploads/2015/03/Starfield_Instancing_white_uniform.png')] bg-cover bg-clip-text bg-center text-9xl font-bold text-transparent transition-colors delay-100 duration-300 group-hover:text-black">Space.</h2>
+    <h2 class="relative mt-6 w-full bg-[url('https://www.urbanexile.net/wordpress/wp-content/uploads/2015/03/Starfield_Instancing_white_uniform.png')] bg-cover bg-clip-text bg-center text-8xl font-bold text-transparent transition-colors delay-100 duration-300 group-hover:text-black md:text-9xl">Space.</h2>
   </div>
   <div class="relative flex flex-shrink-0 backdrop-blur">
-    <div class="relative mx-24 flex w-full items-center gap-24">
-      <p class="relative z-20 max-w-2xl text-2xl text-white">I have a lot of interest in space and science, from black holes to the particles that make up our universe. I love to learn new things about the universe.</p>
+    <div class="relative mx-4 flex w-full items-center gap-10 md:mx-24 md:gap-24">
+      <p class="relative z-20 max-w-xs text-2xl text-white md:max-w-md lg:max-w-lg">I have a lot of interest in space and science, from black holes to the particles that make up our universe. <br /> I love to learn new things about the universe.</p>
       <VerticalCarousel id="melodysheep" text="Courtesy of melodysheep.com">
         {#each melodysheepCards as card}
           <CarouselImg src={pictures[`/src/assets/images/${card.src}`]} alt={card.alt} />
@@ -73,7 +66,7 @@
       </VerticalCarousel>
 
       <div class="relative z-50">
-        <p class="mb-4 max-w-2xl text-2xl text-white">
+        <p class="mb-4 max-w-xs text-2xl text-white md:max-w-md lg:max-w-2xl">
           That's why I love to watch videos from <a href="https://www.youtube.com/user/Melodysheep" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-400">Melodysheep</a>, one of the best space channels on Youtube. The videos they create are just stunning to look at. Covering topics from the future of the universe, to visualizing the various alien lifes that could exist.
         </p>
         <figure class="mx-auto max-w-screen-md text-center">
@@ -99,10 +92,10 @@
       </VerticalCarousel>
 
       <div class="relative z-50">
-        <p class="mb-4 max-w-2xl text-2xl text-white">
+        <p class="mb-4 max-w-xs text-2xl text-white md:max-w-md lg:max-w-2xl">
           I also enjoy watching videos from <a href="https://www.youtube.com/user/Kurzgesagt" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-neutral-400">Kurzgesagt</a>, one of the biggest science channels on Youtube. The videos they create are supported by NGOs, scientists and leading brands; and are beautifully animated.
         </p>
-        <figure class="mx-auto max-w-screen-md text-center">
+        <figure class="mx-auto max-w-xs text-center lg:max-w-screen-md">
           <svg class="mx-auto mb-3 h-10 w-10 text-neutral-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
             <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
           </svg>
