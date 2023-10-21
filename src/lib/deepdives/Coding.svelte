@@ -24,13 +24,7 @@
       bounds: document.getElementById('codingcontainer'),
       dragClickables: false,
       edgeResistance: 0.5,
-      trigger: '#topbarcodingwindow',
-      onClick: function () {
-        console.log('clicked');
-      },
-      onDragEnd: function () {
-        console.log('drag ended');
-      }
+      trigger: '#topbarcodingwindow'
     });
   }
 </script>
