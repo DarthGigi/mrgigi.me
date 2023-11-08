@@ -46,7 +46,7 @@
     <CodingCard bind:isDeepDiveOpen={isDeepDiveCodingOpen} />
     <SpaceCard bind:isDeepDiveOpen={isDeepDiveSpaceOpen} />
     <ProjectsBanner />
-    <MinionCard bind:isDeepDiveOpen={isDeepDiveMinionOpen} />
+    <MinionCard href="https://minions.mrgigi.me" />
     <SiriusCard bind:isDeepDiveOpen={isDeepDiveSiriusOpen} />
   </div>
 </Transition>

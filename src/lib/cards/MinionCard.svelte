@@ -1,14 +1,15 @@
 <script lang="ts">
   import CoinImage from '$assets/images/png/coin.png';
-  import Card from '$lib/components/Card.svelte';
+  import CardLink from '$lib/components/CardLink.svelte';
   import Image from '$lib/components/image.svelte';
   import type { Picture } from '$lib/types';
   const CoinImg = CoinImage as unknown as Picture;
 
-  export let isDeepDiveOpen: boolean;
+  export let href: string;
+  export let target = '_blank';
 </script>
 
-<Card bind:isDeepDiveOpen class="row-span-1 flex w-full items-center px-2 hover:!scale-100 md:col-span-1">
+<CardLink {href} {target} class="row-span-1 flex w-full items-center px-2 hover:!scale-100 md:col-span-1">
   <div class="group relative flex-grow divide-y divide-neutral-700 rounded-lg bg-neutral-800 transition-all duration-300 hover:scale-[1.02] hover:bg-neutral-900 md:scale-90">
     <div class="flex h-full w-full items-center justify-center space-x-6 px-4">
       <div class="z-20 my-2 flex flex-col items-center truncate rounded p-1 transition-all duration-500 hover:scale-150 hover:bg-neutral-800">
@@ -35,4 +36,4 @@
       </div>
     </div>
   </div>
-</Card>
+</CardLink>
