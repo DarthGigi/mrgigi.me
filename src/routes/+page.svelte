@@ -7,7 +7,6 @@
   import SpaceCard from '$lib/cards/SpaceCard.svelte';
   import About from '$lib/deepdives/About.svelte';
   import Coding from '$lib/deepdives/Coding.svelte';
-  import Minion from '$lib/deepdives/Minion.svelte';
   import Sirius from '$lib/deepdives/Sirius.svelte';
   import Space from '$lib/deepdives/Space.svelte';
   import { Transition } from '@rgossiaux/svelte-headlessui';
@@ -16,11 +15,10 @@
   let isDeepDiveAboutOpen = false;
   let isDeepDiveCodingOpen = false;
   let isDeepDiveSpaceOpen = false;
-  let isDeepDiveMinionOpen = false;
   let isDeepDiveSiriusOpen = false;
   let notification: HTMLDivElement;
 
-  $: isAnyDeepDiveOpen = !isDeepDiveAboutOpen && !isDeepDiveCodingOpen && !isDeepDiveSpaceOpen && !isDeepDiveSiriusOpen && !isDeepDiveMinionOpen;
+  $: isAnyDeepDiveOpen = !isDeepDiveAboutOpen && !isDeepDiveCodingOpen && !isDeepDiveSpaceOpen && !isDeepDiveSiriusOpen;
 </script>
 
 <Transition unmount={false} show={isAnyDeepDiveOpen} leave="transition ease-in-out duration-1000 transform" leaveTo="translate-x-[calc(100vw*-1_+_10vw)]" leaveFrom="translate-x-0" enter="transition ease-in-out duration-1000 transform" enterFrom="translate-x-[calc(100vw*-1_+_10vw)]" enterTo="translate-x-0">
@@ -46,7 +44,7 @@
     <CodingCard bind:isDeepDiveOpen={isDeepDiveCodingOpen} />
     <SpaceCard bind:isDeepDiveOpen={isDeepDiveSpaceOpen} />
     <ProjectsBanner />
-    <MinionCard href="https://minions.mrgigi.me" />
+    <MinionCard href="https://minions.mrgigi.me/" />
     <SiriusCard bind:isDeepDiveOpen={isDeepDiveSiriusOpen} />
   </div>
 </Transition>
@@ -56,7 +54,5 @@
 <Coding bind:isDeepDiveCodingOpen />
 
 <Space bind:isDeepDiveSpaceOpen />
-
-<Minion bind:isDeepDiveMinionOpen />
 
 <Sirius bind:isDeepDiveSiriusOpen />
