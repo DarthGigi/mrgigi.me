@@ -8,6 +8,7 @@
   import VisionWindow from '$lib/components/visionOS/visionWindow.svelte';
   import Deepdive from '$lib/layout/Deepdive.svelte';
   import type { Picture } from '$lib/types';
+  import { onMount } from 'svelte';
 
   import { cubicInOut } from 'svelte/easing';
   import { slide } from 'svelte/transition';
@@ -24,6 +25,9 @@
   let designOpen = false;
   let appleOpen = false;
   let contactOpen = false;
+
+  let form: HTMLFormElement;
+  let submitButton: HTMLButtonElement;
 
   function open(card: string) {
     aboutOpen = false;
@@ -45,6 +49,78 @@
         break;
     }
   }
+
+  function sendForm() {
+    if (localStorage.getItem('lastMessageSent') !== null) {
+      console.log('Debug 1');
+      const lastMessageSent = localStorage.getItem('lastMessageSent') as unknown as number;
+      const timeSinceLastMessageSent = Date.now() - lastMessageSent;
+      if (timeSinceLastMessageSent < 3600000) {
+        console.log('Debug 1.5');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Please wait 1 hour before sending another message';
+        setTimeout(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send';
+        }, 3600000 - timeSinceLastMessageSent);
+        return;
+      }
+    }
+
+    // send data to server
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: formData
+    })
+      .then((res) => {
+        if (res.ok) {
+          form.reset();
+          submitButton.disabled = true;
+          submitButton.textContent = 'Message sent';
+          localStorage.setItem('lastMessageSent', Date.now().toString());
+          setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send';
+          }, 3600000);
+        } else {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Something went wrong';
+          setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send';
+          }, 5000);
+        }
+      })
+      .catch(() => {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Something went wrong';
+        setTimeout(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send';
+        }, 3600000);
+      });
+    form.reset();
+  }
+
+  onMount(() => {
+    if (localStorage.getItem('lastMessageSent') !== null) {
+      const lastMessageSent = localStorage.getItem('lastMessageSent') as unknown as number;
+      if (lastMessageSent > Date.now() - 3600000) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Please wait 1 hour before sending another message';
+        setTimeout(
+          () => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send';
+          },
+          3600000 - (Date.now() - lastMessageSent)
+        );
+      }
+    }
+  });
 </script>
 
 <Deepdive bind:isDeepDiveOpen={isDeepDiveAboutOpen} class="relative">
@@ -137,8 +213,22 @@
     {#if contactOpen}
       <div class="flex h-full w-full items-center justify-center will-change-transform" transition:slide={{ duration: 300, easing: cubicInOut }}>
         <div class="flex h-full w-full max-w-md flex-col items-center justify-center">
-          <h1 class="text-center text-4xl font-bold text-white">Contact</h1>
-          <p class="mt-4 text-center text-white">You can contact me via <br />(coming soon)</p>
+          <h1 class="mb-4 text-center text-4xl font-bold text-white">Contact</h1>
+          <form id="emailForm" action="https://formspree.io/f/xknevajg" method="POST" target="_blank" class="w-full space-y-8 px-4 md:px-0" bind:this={form} on:submit|preventDefault={sendForm}>
+            <div>
+              <label for="email" class="mb-2 block text-sm font-medium text-neutral-100">Your email</label>
+              <input name="email" type="email" id="email" class="block w-full rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-sm text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0" required />
+            </div>
+            <div>
+              <label for="subject" class="mb-2 block text-sm font-medium text-neutral-100">Subject</label>
+              <input name="subject" type="text" id="subject" class="block w-full rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-sm text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0" required />
+            </div>
+            <div class="sm:col-span-2">
+              <label for="message" class="mb-2 block text-sm font-medium text-neutral-100">Message</label>
+              <textarea name="message" id="message" rows="6" class="block w-full resize-none rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-sm text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0" required></textarea>
+            </div>
+            <button id="submitButton" type="submit" class="rounded-lg border border-white/[0.18] bg-white/25 p-2.5 px-5 py-3 text-center text-sm font-medium text-white shadow-sm drop-shadow-md transition-all duration-300 hover:bg-white/30 focus:outline-none focus:ring-0 sm:w-fit" bind:this={submitButton}>Send</button>
+          </form>
         </div>
       </div>
     {/if}
