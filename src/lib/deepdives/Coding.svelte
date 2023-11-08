@@ -34,9 +34,7 @@
     <Image src={CodingImg} class="absolute aspect-[4_/_3] h-full w-full select-none object-cover md:-left-1/3 md:top-1/2 md:h-auto md:-translate-y-1/2" alt="Coding" />
     <div id="codingcontainer" class="absolute -left-1/2 flex h-full w-full translate-x-1/2 items-center justify-center">
       <Window id="codingwindow" placeholder="👨🏻‍💻" easteregg={true}>
-        <Highlight class="whitespace-pre-wrap bg-transparent leading-[22.5px] tracking-[.1px]" language={markdown} code={`### 👨🏻‍💻 Coding\nFrom crafting captivating minimalistic masterpieces to weaving immersive user experiences, I infuse every project with my obsession for perfection.\n\nThe art of coding allows me to quickly bring my visions to life, while I find inspiration in the lines of code I type. This creative process is not just about beauty but also about design, as Steve Jobs famously said:`} />
-        <span class="mt-2 block text-center text-lg">“Design is not just what it looks like and feels like. Design is how it works.”</span>
-        <span class="mt-2 block text-center text-sm text-red-400 opacity-40">This text is ChatGPT generated, it's just for placeholder purposes for now</span>
+        <Highlight class="whitespace-pre-wrap bg-transparent leading-[22.5px] tracking-[.1px]" language={markdown} code={`## 👨🏻‍💻 Programming\nI love to code new, cool hobby projects in my free time. So I can learn a new thing or two, a new framework or a whole new language and develop my skills even more.\n\n### Design\nI get my inspiration from the things I see in my daily life and the things I see on the internet. I love to create things that I can use myself, but I also love to create things that other people can use.\n\nTake this macOS window for example, I studied the code from ray.so and made my own version of it.`} />
       </Window>
     </div>
     <div class="w-[200vw]"></div>
