@@ -4,6 +4,6 @@
   "trailingComma": "none",
   "printWidth": 999999,
   "bracketSameLine": true,
-  "plugins": ["prettier-plugin-svelte", "prettier-plugin-organize-imports", "prettier-plugin-organize-attributes", "prettier-plugin-tailwindcss"],
+  "plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
   "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
 }
