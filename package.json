@@ -14,7 +14,6 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@rgossiaux/svelte-headlessui": "^2.0.0",
     "@sveltejs/adapter-vercel": "^4.0.3",
     "@sveltejs/kit": "^2.0.6",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
