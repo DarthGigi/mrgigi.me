@@ -155,7 +155,7 @@
 
     {#if aboutOpen}
       <div class="flex h-full w-full flex-col-reverse items-center justify-center px-4 will-change-transform md:flex-row md:px-0" transition:slide={{ duration: 300, easing: cubicInOut }}>
-        <Image class="pointer-events-none bottom-0 right-0 select-none" src={GigiImg} alt="Gigi Mac" />
+        <Image class="pointer-events-none bottom-0 right-0 select-none max-md:h-56 max-md:w-auto" src={GigiImg} alt="Gigi Mac" />
         <div class="flex h-full w-full max-w-md flex-col items-center justify-center">
           <h1 class="text-center text-4xl font-bold text-white">About</h1>
           <p class="mt-4 text-center text-white">
@@ -194,7 +194,7 @@
     {/if}
 
     {#if appleOpen}
-      <div class="flex h-full w-full flex-col items-center justify-center gap-10 px-2 will-change-transform md:px-0" transition:slide={{ duration: 300, easing: cubicInOut }}>
+      <div class="flex h-full w-full flex-col items-center justify-center gap-2 pb-4 will-change-transform md:px-0" transition:slide={{ duration: 300, easing: cubicInOut }}>
         <div class="flex max-w-md flex-col items-center justify-center">
           <h1 class="text-center text-4xl font-bold text-white">Apple</h1>
           <p class="mt-4 text-center text-white">I am a big fan of Apple. As you can see I've recreated visionOS' interface with just Svelte and Tailwind CSS.</p>
