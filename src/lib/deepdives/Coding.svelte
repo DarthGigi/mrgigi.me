@@ -37,7 +37,7 @@
         <Highlight class="whitespace-pre-wrap bg-transparent leading-[22.5px] tracking-[.1px]" language={markdown} code={`## 👨🏻‍💻 Programming\nI love to code new, cool hobby projects in my free time. So I can learn a new thing or two, a new framework or a whole new language and develop my skills even more.\n\n### Design\nI get my inspiration from the things I see in my daily life and the things I see on the internet. I love to create things that I can use myself, but I also love to create things that other people can use.\n\nTake this macOS window for example, I studied the code from ray.so and made my own version of it.`} />
       </Window>
     </div>
-    <div class="w-[200vw]"></div>
+    <div class="w-[200dvw]"></div>
   </div>
 
   <DeepdiveCloseBtn slot="button" bind:isDeepDiveOpen={isDeepDiveCodingOpen} />

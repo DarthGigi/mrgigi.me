@@ -22,7 +22,7 @@
 </script>
 
 {#if isAnyDeepDiveOpen}
-  <div transition:fly={{ duration: 1000, easing: cubicInOut, x: '-90vw' }}>
+  <div transition:fly={{ duration: 1000, easing: cubicInOut, x: '-90dvw' }}>
     <div class="fixed top-0 z-50 flex h-auto w-full flex-grow items-center justify-between bg-red-500 px-4 py-2 transition-all duration-300" bind:this={notification}>
       <div class="w-14 flex-shrink" />
       <p class="max-w-7xl flex-grow text-center text-white/80">Please keep in mind that this website is not finished yet and is in its very early stages of development. Some things may not work as expected or at all, some things may be missing, and some things may be broken. If you find any bugs or have any suggestions, please let me know.</p>
