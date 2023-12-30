@@ -30,7 +30,7 @@
 </script>
 
 <Deepdive bind:isDeepDiveOpen={isDeepDiveCodingOpen} on:introend={initializeDrag}>
-  <div class="flex h-full">
+  <div class="flex h-full w-screen">
     <Image src={CodingImg} class="absolute aspect-[4_/_3] h-full w-full select-none object-cover md:-left-1/3 md:top-1/2 md:h-auto md:-translate-y-1/2" alt="Coding" />
     <div id="codingcontainer" class="absolute -left-1/2 flex h-full w-full translate-x-1/2 items-center justify-center">
       <Window id="codingwindow" placeholder="👨🏻‍💻" easteregg={true}>
