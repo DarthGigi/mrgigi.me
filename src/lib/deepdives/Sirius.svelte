@@ -8,7 +8,7 @@
 </script>
 
 <Deepdive bind:isDeepDiveOpen={isDeepDiveSiriusOpen} on:scroll={(e) => (scrollProgress = e.detail)}>
-  <div class="relative mx-4 flex h-screen flex-shrink-0 items-center gap-4 md:mx-8 md:gap-8">
+  <div class="relative mx-4 flex h-dvh flex-shrink-0 items-center gap-4 md:mx-8 md:gap-8">
     <div class="relative flex h-full w-[90vw] flex-col items-center justify-center py-24">
       <a href="https://sirius.menu/" target="_blank" class="group relative mb-8 flex items-center justify-center text-2xl font-semibold md:text-7xl"
         >Sirius<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute -right-7 inline-flex h-6 w-6 scale-0 text-white/30 opacity-0 transition-all duration-300 group-hover:scale-125 group-hover:opacity-100">

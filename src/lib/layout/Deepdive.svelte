@@ -9,7 +9,7 @@
 </script>
 
 {#if isDeepDiveOpen}
-  <div class="fixed top-0 z-[9995] h-screen w-full overflow-x-scroll [inset-inline-start:0]" transition:fly={{ duration: 1000, easing: cubicInOut, x: '110vw' }} on:introend={() => dispatch('introend')}>
+  <div class="fixed top-0 z-[9995] h-svh w-full overflow-x-scroll [inset-inline-start:0]" transition:fly={{ duration: 1000, easing: cubicInOut, x: '110vw' }} on:introend={() => dispatch('introend')}>
     <div
       class={`relative flex h-full w-full gap-y-6 overflow-x-auto overflow-y-hidden bg-black ${$$props.class}`}
       on:wheel|passive={(e) => {

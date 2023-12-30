@@ -28,7 +28,7 @@
 </script>
 
 <div class="relative z-30 m-auto h-full w-96">
-  <div class="relative h-screen w-96 items-center overflow-hidden">
+  <div class="relative h-dvh w-96 items-center overflow-hidden">
     <div class="pointer-events-none absolute flex h-full flex-col items-center justify-center">
       <div class="relative z-20 h-full w-96 backdrop-grayscale" />
       <div class="relative z-40 h-full w-full text-center">
@@ -37,7 +37,7 @@
       </div>
       <div class="relative z-20 h-full w-96 backdrop-grayscale" />
     </div>
-    <div {id} class="absolute z-10 block h-screen w-96 overflow-hidden">
+    <div {id} class="absolute z-10 block h-dvh w-96 overflow-hidden">
       <slot />
     </div>
   </div>
