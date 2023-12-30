@@ -12,7 +12,7 @@
   import { cubicInOut } from 'svelte/easing';
   import { fly } from 'svelte/transition';
 
-  let isDeepDiveAboutOpen = true;
+  let isDeepDiveAboutOpen = false;
   let isDeepDiveCodingOpen = false;
   let isDeepDiveSpaceOpen = false;
   let isDeepDiveSiriusOpen = false;
