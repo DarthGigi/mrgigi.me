@@ -1,28 +1,27 @@
 <script lang="ts">
-  import { Transition } from '@rgossiaux/svelte-headlessui';
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
+  import { cubicInOut } from 'svelte/easing';
+  import { fly } from 'svelte/transition';
 
   const dispatch = createEventDispatcher();
 
   export let isDeepDiveOpen = false;
-
-  function introend() {
-    dispatch('introend');
-  }
 </script>
 
-<Transition show={isDeepDiveOpen} class="fixed top-0 z-[9995] h-screen w-full overflow-x-scroll [inset-inline-start:0]" leave="transition ease-in-out duration-1000 transform" leaveTo="translate-x-[calc(100vw*1_+_10vw)]" leaveFrom="translate-x-0" enter="transition ease-in-out duration-1000 transform" enterFrom="translate-x-[calc(100vw*1_+_10vw)]" enterTo="translate-x-0" on:introend={introend}>
-  <div
-    class={`relative flex h-full w-full gap-y-6 overflow-x-auto overflow-y-hidden bg-black ${$$props.class}`}
-    on:wheel|passive={(e) => {
-      e.currentTarget.scrollLeft += e.deltaY * 0.5;
-      dispatch('scroll', e.currentTarget.scrollLeft / (e.currentTarget.scrollWidth - e.currentTarget.clientWidth));
-    }}>
-    <slot />
+{#if isDeepDiveOpen}
+  <div class="fixed top-0 z-[9995] h-screen w-full overflow-x-scroll [inset-inline-start:0]" transition:fly={{ duration: 1000, easing: cubicInOut, x: '110vw' }} on:introend={() => dispatch('introend')}>
+    <div
+      class={`relative flex h-full w-full gap-y-6 overflow-x-auto overflow-y-hidden bg-black ${$$props.class}`}
+      on:wheel|passive={(e) => {
+        e.currentTarget.scrollLeft += e.deltaY * 0.5;
+        dispatch('scroll', e.currentTarget.scrollLeft / (e.currentTarget.scrollWidth - e.currentTarget.clientWidth));
+      }}>
+      <slot />
+    </div>
+    <div class="absolute bottom-5 left-0 flex w-full flex-row-reverse items-center justify-center">
+      <slot name="button" />
+      <slot name="progress" />
+      <slot name="extra" />
+    </div>
   </div>
-  <div class="absolute bottom-5 left-0 flex w-full flex-row-reverse items-center justify-center">
-    <slot name="button" />
-    <slot name="progress" />
-    <slot name="extra" />
-  </div>
-</Transition>
+{/if}
