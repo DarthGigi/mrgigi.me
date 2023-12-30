@@ -10,6 +10,7 @@
   import { onMount } from 'svelte';
   import { Highlight } from 'svelte-highlight';
   import ts from 'svelte-highlight/languages/typescript';
+  import 'svelte-highlight/styles/github-dark.css';
 
   const ProContainerImg = ProContainerImage as unknown as Picture;
 
