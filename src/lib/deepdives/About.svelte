@@ -215,17 +215,19 @@
         <div class="flex h-full w-full max-w-md flex-col items-center justify-center">
           <h1 class="mb-4 text-center text-4xl font-bold text-white">Contact</h1>
           <form id="emailForm" action="https://formspree.io/f/xknevajg" method="POST" target="_blank" class="w-full space-y-8 px-4 md:px-0" bind:this={form} on:submit|preventDefault={sendForm}>
-            <div>
-              <label for="email" class="mb-2 block text-sm font-medium text-neutral-100">Your email</label>
-              <input name="email" type="email" id="email" class="block w-full rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-sm text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0" required />
-            </div>
-            <div>
-              <label for="subject" class="mb-2 block text-sm font-medium text-neutral-100">Subject</label>
-              <input name="subject" type="text" id="subject" class="block w-full rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-sm text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0" required />
+            <div class="flex gap-8 md:flex-col">
+              <div>
+                <label for="email" class="mb-2 block text-sm font-medium text-neutral-100">Your email</label>
+                <input name="email" type="email" id="email" autocomplete="email" class="block w-full rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-base text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0 md:text-sm" required />
+              </div>
+              <div>
+                <label for="subject" class="mb-2 block text-sm font-medium text-neutral-100">Subject</label>
+                <input name="subject" type="text" id="subject" class="block w-full rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-base text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0 md:text-sm" required />
+              </div>
             </div>
             <div class="sm:col-span-2">
               <label for="message" class="mb-2 block text-sm font-medium text-neutral-100">Message</label>
-              <textarea name="message" id="message" rows="6" class="block w-full resize-none rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-sm text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0" required></textarea>
+              <textarea name="message" id="message" rows="6" class="block w-full resize-none rounded-lg border border-white/[0.18] bg-white/25 p-2.5 text-base text-white shadow-sm drop-shadow-md focus:outline-none focus:ring-0 md:text-sm" required></textarea>
             </div>
             <button id="submitButton" type="submit" class="rounded-lg border border-white/[0.18] bg-white/25 p-2.5 px-5 py-3 text-center text-sm font-medium text-white shadow-sm drop-shadow-md transition-all duration-300 hover:bg-white/30 focus:outline-none focus:ring-0 sm:w-fit" bind:this={submitButton}>Send</button>
           </form>
