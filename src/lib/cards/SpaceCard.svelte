@@ -19,13 +19,13 @@
   let lettherebelife: HTMLVideoElement;
 </script>
 
-<Card bind:isDeepDiveOpen class="group row-span-1 flex items-center justify-center border-none bg-[#06273b] md:col-span-1">
-  <div class="flex h-full w-full flex-col" on:mouseover={() => lettherebelife.play()} on:mouseleave={() => setTimeout(() => lettherebelife.pause(), 1000)} on:focus={() => lettherebelife.play()} on:blur={() => setTimeout(() => lettherebelife.pause(), 1000)} role="button" tabindex="0">
+<Card bind:isDeepDiveOpen tabindex={-1} class="group row-span-1 flex items-center justify-center border-none bg-[#06273b] md:col-span-1">
+  <div class="flex h-full w-full flex-col" on:mouseover={() => lettherebelife.play()} on:mouseleave={() => setTimeout(() => lettherebelife.pause(), 1000)} on:focus={() => lettherebelife.play()} on:blur={() => setTimeout(() => lettherebelife.pause(), 1000)} role="button" tabindex="0" aria-label="Let There Be Life">
     <video bind:this={lettherebelife} muted playsinline loop preload="metadata" class="lozad h-full w-full object-cover object-center active:!pointer-events-none md:rounded-lg" poster={videoThumbnailImg.img.src} on:loadedmetadata={() => (lettherebelife.currentTime = 22)}>
       <source data-src="/assets/videos/webm/lettherebelife.webm" type="video/webm" />
       <source data-src="/assets/videos/mp4/lettherebelife.mp4" type="video/mp4" />
     </video>
-    <button type="button" class="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 transform text-white opacity-0 transition-all delay-500 duration-300 group-hover:-translate-y-3 group-hover:opacity-20" on:click|stopPropagation={() => (lettherebelife.muted = !lettherebelife.muted)}>
+    <button type="button" aria-label="Toggle mute" class="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 transform text-white opacity-0 transition-all delay-500 duration-300 group-hover:-translate-y-3 group-hover:opacity-20" on:click|stopPropagation={() => (lettherebelife.muted = !lettherebelife.muted)}>
       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         {#if lettherebelife}
           {#if lettherebelife.muted}
