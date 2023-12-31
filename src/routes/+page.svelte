@@ -28,6 +28,7 @@
       <p class="max-w-7xl flex-grow text-center text-white/80">Please keep in mind that this website is not finished yet and is in its very early stages of development. Some things may not work as expected or at all, some things may be missing, and some things may be broken. If you find any bugs or have any suggestions, please let me know.</p>
       <button
         type="button"
+        aria-label="Close notification"
         class="flex flex-shrink rounded-lg bg-red-700 px-4 py-2 text-red-200"
         on:click|self={() => {
           notification.classList.add('-translate-y-full');
