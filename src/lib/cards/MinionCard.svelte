@@ -1,9 +1,13 @@
 <script lang="ts">
   import CoinImage from '$assets/images/png/coin.png';
+  import MinionImage from '$assets/images/png/snow_minion.png';
+  import UserImage from '$assets/images/png/user.png';
   import CardLink from '$lib/components/CardLink.svelte';
   import Image from '$lib/components/image.svelte';
   import type { Picture } from '$lib/types';
   const CoinImg = CoinImage as unknown as Picture;
+  const MinionImg = MinionImage as unknown as Picture;
+  const UserImg = UserImage as unknown as Picture;
 
   export let href: string;
   export let target = '_blank';
@@ -13,11 +17,11 @@
   <div class="group relative flex-grow divide-y divide-neutral-700 rounded-lg bg-neutral-800 transition-all duration-300 hover:scale-[1.02] hover:bg-neutral-900 md:scale-90">
     <div class="flex h-full w-full items-center justify-center space-x-6 px-4">
       <div class="z-20 my-2 flex flex-col items-center truncate rounded p-1 transition-all duration-500 hover:scale-150 hover:bg-neutral-800">
-        <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-full bg-neutral-700 p-1"><img class="pointer-events-none h-full w-full" src="https://mc-heads.net/head/bce70b1b8e30e90a5ad951f42ff469c19dd416cedf98d5aa4178ec953c584796" alt="Snow Minion XI head" /></div>
+        <div class="h-12 w-12 flex-shrink-0 overflow-hidden rounded-full bg-neutral-700 p-1"><Image class="pointer-events-none h-full w-auto" src={MinionImg} alt="Snow Minion XI head" /></div>
         <h3 class="truncate text-sm font-medium text-white">Snow Minion</h3>
       </div>
       <div class="z-20 my-2 flex flex-col items-center truncate rounded p-1 transition-all duration-500 hover:scale-150 hover:bg-neutral-800">
-        <img class="pointer-events-none h-12 w-12 flex-shrink-0 rounded-full bg-neutral-700 object-cover" src="https://cdn.discordapp.com/avatars/389759544776982528/a_8c19a242e5ad487409f1f60c623eaf6c.png?size=64" alt="tim_cook's discord avatar" />
+        <Image class="pointer-events-none h-12 w-12 flex-shrink-0 rounded-full bg-neutral-700 object-cover" src={UserImg} alt="tim_cook's discord avatar" />
         <h3 class="text-sm font-medium text-white">tim_cook</h3>
       </div>
     </div>
