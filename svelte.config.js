@@ -4,7 +4,7 @@ import adapter from "@sveltejs/adapter-cloudflare";
 const config = {
   compilerOptions: {
     // defaults to rune mode for the project. Can be removed in svelte 6.
-    dynamicCompileOptions: () => ({ runes: true })
+    runes: true
   },
   kit: { adapter: adapter() }
 };
