@@ -1,8 +1,8 @@
 <script lang="ts">
+  import { GlitterCloth, PixelatedImage } from "$lib/components/motion-core";
   import { DATA } from "$lib/data/resume";
   import ContactSection from "$lib/sections/contact-section.svelte";
   import ProjectsSection from "$lib/sections/projects-section.svelte";
-  import * as Avatar from "$ui/avatar";
   import rehypeExternalLinks from "rehype-external-links";
   import Markdown, { type Plugin } from "svelte-exmarkdown";
 
@@ -19,6 +19,14 @@
   ];
 </script>
 
+<GlitterCloth
+  class="fixed inset-0 top-0 h-screen w-screen"
+  color="#171717"
+  blendStrength={0.02}
+  brightness={1}
+  vignettePower={0.5}
+  vignetteStrength={50} />
+
 <div class="relative z-10 mx-auto max-w-2xl px-6 py-12 pb-24 select-none sm:py-24">
   <main class="relative flex min-h-dvh flex-col gap-14">
     <section id="hero" class="motion-preset-blur-down">
@@ -33,11 +41,9 @@
             </span>
           </div>
           <div class="order-1 md:order-2">
-            <Avatar.Root
-              class="size-24 rounded-full border-0 shadow-lg data-[status=loaded]:motion-preset-focus data-[status=loading]:opacity-0 md:size-32">
-              <Avatar.Image alt={DATA.name} src={DATA.avatarUrl} />
-              <Avatar.Fallback>{DATA.initials}</Avatar.Fallback>
-            </Avatar.Root>
+            <PixelatedImage
+              class="size-24 rounded-full border-0 shadow-lg data-[status=loaded]:motion-preset-focus data-[status=loading]:opacity-0 md:size-32"
+              src={DATA.avatarUrl} />
           </div>
         </div>
       </div>
