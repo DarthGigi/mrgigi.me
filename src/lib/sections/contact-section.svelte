@@ -3,7 +3,8 @@
   import { Button } from "bits-ui";
 </script>
 
-<div class="relative motion-preset-blur-down rounded-xl border p-10 motion-delay-2100">
+<div
+  class="relative motion-preset-blur-down rounded-xl border bg-background p-10 motion-delay-2100">
   <div
     class="absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded-xl border bg-primary px-4 py-1">
     <span class="text-sm font-medium text-background">Contact</span>

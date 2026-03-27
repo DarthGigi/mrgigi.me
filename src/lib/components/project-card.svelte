@@ -23,11 +23,7 @@
   }: Props = $props();
 </script>
 
-<div
-  class={cn(
-    "flex h-full cursor-pointer flex-col overflow-hidden rounded-xl border border-border transition-all duration-200 hover:ring-2 hover:ring-muted",
-    className
-  )}>
+<div class={cn("flex h-full flex-col overflow-hidden rounded-xl border border-border", className)}>
   <div class="relative shrink-0">
     <Button.Root
       href={href || undefined}
@@ -68,7 +64,7 @@
       </div>
     {/if}
   </div>
-  <div class="flex flex-1 flex-col gap-3 p-6">
+  <div class="flex flex-1 flex-col gap-3 bg-background p-6">
     <div class="flex items-start justify-between gap-2">
       <div class="flex flex-col gap-1">
         <h3 class="font-semibold">{title}</h3>
