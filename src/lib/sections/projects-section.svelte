@@ -6,7 +6,7 @@
 <section id="projects">
   <div class="flex min-h-0 flex-col gap-y-8">
     <div class="flex flex-col items-center justify-center gap-y-4">
-      <div class="flex w-full items-center">
+      <div class="flex w-full motion-preset-blur-down items-center motion-delay-1500">
         <div
           class="h-px flex-1 bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent">
         </div>
@@ -17,7 +17,8 @@
           class="h-px flex-1 bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent">
         </div>
       </div>
-      <div class="flex flex-col items-center justify-center gap-y-3">
+      <div
+        class="flex motion-preset-blur-down flex-col items-center justify-center gap-y-3 motion-delay-1600">
         <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Check out my projects</h2>
         <p
           class="text-center text-balance text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed">
@@ -28,7 +29,7 @@
     </div>
     <div class="mx-auto grid max-w-200 auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2">
       {#each DATA.projects as project (project)}
-        <div class="h-full">
+        <div class="h-full motion-preset-blur-down motion-delay-[calc((sibling-index()+17)*0.1s)]">
           <ProjectCard {...project} />
         </div>
       {/each}

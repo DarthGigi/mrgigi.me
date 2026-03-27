@@ -19,9 +19,9 @@
   ];
 </script>
 
-<div class="relative z-10 mx-auto max-w-2xl px-6 py-12 pb-24 sm:py-24">
+<div class="relative z-10 mx-auto max-w-2xl px-6 py-12 pb-24 select-none sm:py-24">
   <main class="relative flex min-h-dvh flex-col gap-14">
-    <section id="hero">
+    <section id="hero" class="motion-preset-blur-down">
       <div class="mx-auto w-full max-w-2xl space-y-8">
         <div class="flex flex-col justify-between gap-2 gap-y-6 md:flex-row">
           <div class="order-2 flex flex-col gap-2 md:order-1">
@@ -33,7 +33,8 @@
             </span>
           </div>
           <div class="order-1 md:order-2">
-            <Avatar.Root class="size-24 rounded-full border shadow-lg ring-4 ring-muted md:size-32">
+            <Avatar.Root
+              class="size-24 rounded-full border-0 shadow-lg data-[status=loaded]:motion-preset-focus data-[status=loading]:opacity-0 md:size-32">
               <Avatar.Image alt={DATA.name} src={DATA.avatarUrl} />
               <Avatar.Fallback>{DATA.initials}</Avatar.Fallback>
             </Avatar.Root>
@@ -42,47 +43,37 @@
       </div>
     </section>
     <section id="about">
-      <div class="flex min-h-0 flex-col gap-y-4">
-        <div>
-          <h2 class="text-xl font-bold">About</h2>
-        </div>
-        <div>
-          <div
-            class="prose max-w-full font-sans leading-relaxed text-pretty text-muted-foreground dark:prose-invert">
-            <Markdown md={DATA.summary} plugins={mdPlugins} />
-          </div>
+      <div
+        class="flex min-h-0 flex-col gap-y-4 **:motion-preset-blur-down **:motion-delay-[calc((sibling-index()+1)*0.1s)]">
+        <h2 class="text-xl font-bold">About</h2>
+        <div
+          class="prose max-w-full font-sans leading-relaxed text-pretty text-muted-foreground dark:prose-invert">
+          <Markdown md={DATA.summary} plugins={mdPlugins} />
         </div>
       </div>
     </section>
     <section id="skills">
       <div class="flex min-h-0 flex-col gap-y-4">
-        <div>
-          <h2 class="text-xl font-bold">Skills</h2>
-        </div>
+        <h2 class="motion-preset-blur-down text-xl font-bold motion-delay-500">Skills</h2>
+
         <div class="flex flex-wrap gap-2">
           {#each DATA.skills as skill (skill)}
-            <div>
-              <div
-                class="flex h-8 w-fit items-center gap-2 rounded-xl border border-border bg-background px-4 ring-2 ring-border/20">
-                {#if skill.icon}
-                  <skill.icon class="size-4 overflow-hidden rounded object-contain" />
-                {/if}
-                <span class="text-sm font-medium text-foreground">{skill.name}</span>
-              </div>
+            <div
+              class="flex h-8 w-fit motion-preset-blur-down items-center gap-2 rounded-xl border border-border bg-background px-4 ring-2 ring-border/20 motion-delay-[calc((sibling-index()+5)*0.1s)]">
+              {#if skill.icon}
+                <skill.icon class="size-4 overflow-hidden rounded object-contain" />
+              {/if}
+              <span class="text-sm font-medium text-foreground">{skill.name}</span>
             </div>
           {/each}
         </div>
       </div>
     </section>
     <section id="projects">
-      <div>
-        <ProjectsSection />
-      </div>
+      <ProjectsSection />
     </section>
     <section id="contact">
-      <div>
-        <ContactSection />
-      </div>
+      <ContactSection />
     </section>
   </main>
 </div>
