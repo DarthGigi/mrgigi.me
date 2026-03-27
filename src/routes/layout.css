@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
+@plugin "tailwindcss-motion";
 @import "@fontsource-variable/inter";
 
 @custom-variant dark (&:is(.dark *));
