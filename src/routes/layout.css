@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 @import "@fontsource-variable/inter";
 
@@ -123,7 +124,7 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-sans antialiased;
   }
 }
 
@@ -193,4 +194,102 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.prose pre {
+  @apply bg-transparent! font-mono! leading-relaxed;
+}
+
+.prose code {
+  @apply m-0! mx-1! rounded-md! border bg-muted/60 px-1.5 py-0.5 font-mono text-[13px]! text-foreground/90! dark:bg-muted/40;
+}
+
+.prose code::before,
+.prose code::after {
+  @apply content-none!;
+}
+
+.prose h1 {
+  @apply text-2xl! leading-tight! font-semibold! tracking-tight!;
+}
+
+.prose h2 {
+  @apply text-xl! leading-tight! font-semibold! tracking-tight!;
+}
+
+.prose h3 {
+  @apply text-lg! leading-tight! font-semibold! tracking-tight!;
+}
+
+.prose h4 {
+  @apply text-base! leading-tight! font-medium! tracking-tight!;
+}
+
+.prose h5 {
+  @apply text-base! leading-tight! font-medium! tracking-tight!;
+}
+
+.prose h6 {
+  @apply text-base! leading-tight! font-medium! tracking-tight!;
+}
+
+.prose a {
+  @apply text-primary underline underline-offset-4;
+}
+
+.prose blockquote {
+  @apply rounded-md rounded-l-none border-l-4 border-amber-500! bg-muted/50 p-4 pl-4 italic;
+}
+
+.prose blockquote p {
+  @apply m-0!;
+}
+
+.prose blockquote p:first-child {
+  @apply mt-0!;
+}
+
+/* Task lists (remark-gfm): remove bullet marker so it renders like a pure checklist */
+.prose :where(ul.contains-task-list):not(:where([class~="not-prose"] *)) {
+  @apply list-none! pl-0!;
+}
+
+.prose :where(li.task-list-item):not(:where([class~="not-prose"] *)) {
+  @apply pl-0!;
+}
+
+.prose :where(li.task-list-item > input[type="checkbox"]):not(:where([class~="not-prose"] *)) {
+  @apply mr-2 align-middle!;
+}
+
+.prose :where(table):not(:where([class~="not-prose"]) *) {
+  @apply w-full min-w-full;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.prose :where(th):not(:where([class~="not-prose"] *)),
+.prose :where(td):not(:where([class~="not-prose"] *)) {
+  @apply m-0 px-6 py-4 align-middle whitespace-nowrap;
+}
+
+.prose tr {
+  @apply h-10! cursor-pointer! transition-colors! hover:bg-accent/50!;
+}
+
+.prose :where(th):not(:where([class~="not-prose"] *)) {
+  @apply m-0! border-b border-border bg-muted/50 p-3! py-2! text-left font-semibold text-foreground;
+}
+
+.prose :where(td):not(:where([class~="not-prose"] *)) {
+  @apply border-b border-border p-2! text-sm! text-muted-foreground;
+}
+
+.prose :where(th:not(:last-child)):not(:where([class~="not-prose"] *)),
+.prose :where(td:not(:last-child)):not(:where([class~="not-prose"] *)) {
+  @apply border-r border-border;
+}
+
+.prose :where(tbody tr:last-child td):not(:where([class~="not-prose"] *)) {
+  @apply border-b-0;
 }
