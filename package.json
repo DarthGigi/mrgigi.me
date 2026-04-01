@@ -44,6 +44,7 @@
     "prettier-plugin-tailwindcss": "^0.7.2",
     "rehype-external-links": "^3.0.0",
     "runed": "^0.37.1",
+    "shadcn-svelte": "^1.2.6",
     "svelte": "^5.55.1",
     "svelte-check": "^4.4.6",
     "svelte-exmarkdown": "^5.0.2",

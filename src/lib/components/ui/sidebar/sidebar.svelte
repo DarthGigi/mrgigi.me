@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Sheet from "$lib/components/ui/sheet/index.js";
+  import * as Sheet from "$ui/sheet/index.js";
   import { cn, type WithElementRef } from "$lib/utils.js";
   import type { HTMLAttributes } from "svelte/elements";
   import { SIDEBAR_WIDTH_MOBILE } from "./constants.js";
@@ -92,7 +92,7 @@
       <div
         data-sidebar="sidebar"
         data-slot="sidebar-inner"
-        class="flex size-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1 group-data-[variant=floating]:ring-sidebar-border">
+        class="flex size-full flex-col bg-sidebar group-data-[variant=floating]:rounded-2xl group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1 group-data-[variant=floating]:ring-sidebar-border">
         {@render children?.()}
       </div>
     </div>
