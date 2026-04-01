@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { GlitterCloth, PixelatedImage } from "$lib/components/motion-core";
+  import { PixelatedImage } from "$lib/components/motion-core";
   import { DATA } from "$lib/data/resume";
   import ContactSection from "$lib/sections/contact-section.svelte";
   import ProjectsSection from "$lib/sections/projects-section.svelte";
@@ -18,14 +18,6 @@
     }
   ];
 </script>
-
-<GlitterCloth
-  class="fixed inset-0 top-0 h-screen w-screen"
-  color="#171717"
-  blendStrength={0.02}
-  brightness={1}
-  vignettePower={0.5}
-  vignetteStrength={50} />
 
 <div class="relative z-10 mx-auto max-w-2xl px-6 py-12 pb-24 select-none sm:py-24">
   <main class="relative flex min-h-dvh flex-col gap-14">

@@ -1,16 +1,16 @@
+import AstroLogo from "$components/svg/astro.svelte";
 import DrizzleORMLogo from "$components/svg/drizzle.svelte";
 import GitHubLogo from "$components/svg/github.svelte";
+import XformerlyTwitterLogo from "$components/svg/twitter.svelte";
 import type { IconType } from "$lib/types/icon";
 import GlobeIcon from "@lucide/svelte/icons/globe";
 import {
-  AstroLogo,
   NuxtLogo,
   PostgreSQLLogo,
   ShadcnuiLogo,
   SvelteLogo,
   TailwindCSSLogo,
-  VueLogo,
-  XformerlyTwitterLogo
+  VueLogo
 } from "@selemondev/svgl-svelte";
 
 export const DATA = {
@@ -48,7 +48,7 @@ export const DATA = {
         navbar: true
       },
       X: {
-        name: "X",
+        name: "X (Twitter)",
         url: "https://x.com/iDarthGigi",
         icon: XformerlyTwitterLogo,
         navbar: true
