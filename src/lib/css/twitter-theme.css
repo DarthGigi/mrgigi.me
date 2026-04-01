@@ -1,0 +1,98 @@
+@reference "../../routes/layout.css";
+
+.tweetCard .react-tweet-theme {
+  @apply max-w-0 min-w-full rounded-none border-0 border-none font-sans text-base;
+  --tweet-container-margin: 0;
+  --tweet-body-font-size: 1rem;
+  --tweet-body-line-height: 1.5rem;
+  --tweet-actions-font-weight: 600;
+  --tweet-font-color: var(--color-primary);
+  --tweet-font-color-secondary: var(--color-muted-foreground);
+  --tweet-quoted-container-margin: 0;
+  --tweet-bg-color: var(--color-card);
+  --tweet-border: var(--color-border);
+  --tweet-bg-color-hover: var(--color-muted);
+  --tweet-skeleton-gradient: linear-gradient(270deg, var(--color-muted));
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-container_article__"] {
+  @apply p-4;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-header_follow__"],
+.tweetCard .react-tweet-theme [class^="tweet-header_authorLinkText__"] {
+  @apply font-semibold;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-replies_replies__"],
+.tweetCard .react-tweet-theme [class^="tweet-info_infoLink__"],
+.tweetCard .react-tweet-theme [class^="tweet-header_authorFollow__"] {
+  @apply hidden;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-header_author__"] {
+  @apply mx-2 justify-start;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-info_info__"] {
+  @apply mt-3 mb-1;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-actions_likeCount__"] {
+  @apply m-0;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-actions_actions__"] {
+  @apply flex-wrap;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-actions_like__"],
+.tweetCard .react-tweet-theme [class^="tweet-actions_reply__"] {
+  @apply mr-3;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-actions_copy__"] {
+  @apply mr-0;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-header_avatar__"] {
+  @apply aspect-square;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-header_avatarOverflow__"] > img {
+  @apply border-none;
+}
+
+.tweetCard .react-tweet-theme [class^="quoted-tweet-container_root"] {
+  @apply mt-4;
+}
+
+.tweetCard .react-tweet-theme [class^="quoted-tweet-container_root__"] {
+  @apply p-4;
+}
+
+.tweetCard .react-tweet-theme [class^="quoted-tweet-body_root__"],
+.tweetCard .react-tweet-theme [class^="quoted-tweet-header_header___"] {
+  @apply px-0;
+}
+
+.tweetCard .react-tweet-theme [class^="quoted-tweet-header_header___"] {
+  @apply pt-0;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-actions_replyText__"],
+.tweetCard .react-tweet-theme [class^="tweet-actions_copyText__"] {
+  @apply ml-0;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-not-found_root"] {
+  @apply pb-0;
+}
+
+.tweetCard .react-tweet-theme [class^="tweet-not-found_root"] > p {
+  @apply mb-0;
+}
+
+.tweetCard .react-tweet-theme [class^="skeleton"] {
+  @apply animate-pulse;
+}
