@@ -1,14 +1,22 @@
-import { query } from "$app/server";
-import { getTweet } from "sveltweet/api";
+import { getRequestEvent, query } from "$app/server";
 import type { Tweet } from "sveltweet/api";
+import { getTweet } from "sveltweet/api";
 import { z } from "zod";
 
 const getErrorMessage = (error: unknown) =>
   error instanceof Error ? error.message : String(error);
 
 async function safeGetTweet(id: string): Promise<Tweet | null> {
+  const { request } = getRequestEvent();
   try {
-    return (await getTweet(id)) ?? null;
+    return (
+      (await getTweet(id, {
+        headers: {
+          ...request.headers,
+          "User-Agent": "node"
+        }
+      })) ?? null
+    );
   } catch (error) {
     console.error(`Failed to fetch tweet ${id}: ${getErrorMessage(error)}`);
     return null;
