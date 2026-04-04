@@ -19,7 +19,8 @@ const config = {
       $components: "src/lib/components",
       $ui: "src/lib/components/ui",
       $utils: "src/lib/utils",
-      $hooks: "src/lib/hooks"
+      $hooks: "src/lib/hooks",
+      $src: "src"
     }
   }
 };
