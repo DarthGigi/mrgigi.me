@@ -1,6 +1,5 @@
 import { query } from "$app/server";
 import { env as envPrivate } from "$env/dynamic/private";
-import { COLLECTION_IDS } from "$lib/constants";
 import type {
   RaindropBookmarkItem,
   RaindropCollection,
@@ -71,10 +70,7 @@ export const getCollections = query(async () => {
 
     const collections: { result: boolean; items: RaindropCollectionWithSlug[] } =
       await response.json();
-    const filteredCollections = collections.items.filter((collection) =>
-      COLLECTION_IDS.includes(collection._id)
-    );
-    return filteredCollections;
+    return collections.items;
   } catch (error) {
     console.error(`Failed to fetch collections: ${getErrorMessage(error)}`);
     return null;
